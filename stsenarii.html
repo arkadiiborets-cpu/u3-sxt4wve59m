@@ -1,0 +1,309 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Сценарий урока 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Unbounded:wght@900&display=swap">
+<style>
+/* Поминутный сценарий: слева шкала времени и навигация, справа блоки «говорю / показываю / спрашиваю / темп». AXAL One, одна тёмная тема. */
+:root {
+  --page: #08080B; --panel: #13121C; --surface: #0D0C14; --line: #232130; --line-strong: #3A3650;
+  --ink: #EFEDFA; --ink-2: #B4AFC8; --ink-3: #918CA9;
+  --accent: #8B5CF6; --accent-text: #A78BFA; --live: #22D3EE; --warn: #FBBF24; --ok: #34D399; --danger: #F87171;
+  --ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --display: "Unbounded", "Arial Black", sans-serif;
+  color-scheme: dark;
+}
+body { background: var(--page); color: var(--ink); font-family: var(--ui); font-size: 14px; line-height: 1.5; margin: 0;
+  padding-block: 20px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 28px; }
+nav { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); align-self: start; display: flex; flex-direction: column; gap: 2px; }
+nav a { display: grid; grid-template-columns: 46px 1fr; gap: 6px; color: var(--ink-2); text-decoration: none; font-size: 13px; padding: 5px 8px; border-left: 2px solid transparent; }
+nav a span { font-family: var(--mono); font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+nav a:hover, nav a:focus-visible { color: var(--ink); border-left-color: var(--accent); outline: none; }
+nav a.now { color: var(--ink); border-left-color: var(--live); background: var(--panel); }
+nav a.now span { color: var(--live); }
+h1 { font-family: var(--display); font-weight: 900; font-size: 26px; text-transform: uppercase; margin: 0; letter-spacing: .01em; }
+h1 span { color: var(--accent); }
+.lead { color: var(--ink-3); margin: 6px 0 0; max-width: 70ch; }
+.nowbar { margin: 16px 0 24px; display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line-strong); }
+.nowbar b { font-family: var(--mono); font-weight: 500; color: var(--live); font-variant-numeric: tabular-nums; }
+.nowbar .k { font-family: var(--mono); font-size: 12px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+section { scroll-margin-top: 16px; margin-bottom: 18px; }
+.blk { background: var(--panel); border: 1px solid var(--line); }
+.blk.now { border-color: var(--live); }
+.bh { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.bh .t { font-family: var(--mono); font-size: 13px; color: var(--accent-text); font-variant-numeric: tabular-nums; }
+.bh h2 { margin: 0; font-size: 17px; font-weight: 600; }
+.bh .sl { font-family: var(--mono); font-size: 12px; color: var(--ink-3); margin-left: auto; }
+.rows { display: flex; flex-direction: column; }
+.row { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: 12px; row-gap: 6px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+.row > :not(.lab) { grid-column: 2; }
+.row > .lab { grid-row: 1; }
+.row:last-child { border-bottom: 0; }
+.lab { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+.lab.say { color: var(--ink-2); } .lab.show { color: var(--live); } .lab.ask { color: var(--accent-text); } .lab.pace { color: var(--warn); } .lab.key { color: var(--ok); }
+.row p { margin: 0; }
+.row ul { margin: 0; padding-left: 18px; } .row li { margin: 3px 0; }
+.q { color: var(--ink); font-weight: 500; }
+.who { font-family: var(--mono); font-size: 12px; color: var(--accent-text); }
+.exp { color: var(--ink-3); }
+.slide { font-family: var(--mono); font-size: 12px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-strong); padding: 0 5px; white-space: nowrap; }
+.ref { font-family: var(--mono); font-size: 12px; color: var(--live); }
+code { font-family: var(--mono); font-size: 12.5px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); padding: 0 4px; overflow-wrap: anywhere; }
+.fast { color: var(--ok); } .slow { color: var(--warn); }
+.check { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.check label { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; cursor: pointer; }
+.check input { accent-color: var(--accent); margin-top: 3px; }
+.check input:checked + span { color: var(--ink-3); text-decoration: line-through; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.tw { overflow-x: auto; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--accent-text); }
+h3.sub { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); margin: 28px 0 10px; }
+@media (max-width: 820px) { .wrap { grid-template-columns: 1fr; } nav { position: static; flex-direction: row; flex-wrap: wrap; } nav a { grid-template-columns: auto auto; } .row { grid-template-columns: 1fr; } .row > :not(.lab), .row > .lab { grid-column: 1; grid-row: auto; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+<nav aria-label="Блоки урока">
+  <a href="#prep" data-from="13:30" data-to="14:00"><span>13:30</span>До урока</a>
+  <a href="#b1" data-from="14:00" data-to="14:05"><span>14:00</span>Старт</a>
+  <a href="#b2" data-from="14:05" data-to="14:17"><span>14:05</span>Домашки</a>
+  <a href="#b3" data-from="14:17" data-to="14:40"><span>14:17</span>Карта и режимы</a>
+  <a href="#b4" data-from="14:40" data-to="15:00"><span>14:40</span>Skills</a>
+  <a href="#brk" data-from="15:00" data-to="15:10"><span>15:00</span>Перерыв</a>
+  <a href="#b5" data-from="15:10" data-to="15:32"><span>15:10</span>«Мої задачі»</a>
+  <a href="#b6" data-from="15:32" data-to="15:50"><span>15:32</span>Автоматизации</a>
+  <a href="#b7" data-from="15:50" data-to="16:00"><span>15:50</span>Домашка 3</a>
+  <a href="#faq"><span>FAQ</span>Их вопросы</a>
+  <a href="#keys"><span>ОТВ</span>Ответы к показам</a>
+  <a href="#rescue"><span>SOS</span>Если что-то не так</a>
+</nav>
+
+<main>
+<h1>Сценарий урока 3<span>.</span></h1>
+<p class="lead">Пятница, 06.11, 14:00–16:00, Meet xbg-whyr-tkw. Практики нет — показываете вживую в их веб-Code, группа подсказывает и отвечает. Вопросы просим писать в чат Meet сразу, разбираем в конце каждого блока. Запросы для копирования — на странице «Запросы урока 3», здесь указан номер раздела.</p>
+
+<div class="nowbar" id="nowbar">
+  <span class="k">Сейчас</span><b id="clock">—</b>
+  <span class="k">По плану</span><span id="planNow">урок ещё не начался</span>
+  <span class="k">Контрольные точки</span><span>14:17 слайд 4 · 14:40 слайд 10 · 15:00 перерыв · 15:32 слайд 20 · 15:50 слайд 28</span>
+</div>
+
+<section id="prep">
+<div class="blk" data-from="13:30" data-to="14:00">
+<div class="bh"><span class="t">13:30–13:55</span><h2>До урока</h2><span class="sl">галочки сохраняются в этом браузере</span></div>
+<div class="rows">
+<div class="row"><span class="lab show">Вкладки</span><ul class="check" id="prepList">
+<li><label><input type="checkbox" id="p1"><span>Meet открыт, чат Meet виден. Экран делим целиком, не вкладку — будем переключаться.</span></label></li>
+<li><label><input type="checkbox" id="p2"><span>Презентация на слайде 1. Заметки к слайдам — короткая версия этой страницы.</span></label></li>
+<li><label><input type="checkbox" id="p3"><span>Сессия Code «A» на общем аккаунте: claude.ai/code → репозиторий AIagtplus/agt-claude-practice. Спросить: <code>Які skills є в цьому репозиторії?</code> → должны назвать chek-v-riadok, vidpovid-na-reklamatsiiu, tyzhnevyi-zvit. Так проверяете, что всё видно.</span></label></li>
+<li><label><input type="checkbox" id="p4"><span>Вкладка с новой пустой сессией Code «B» на том же репозитории — для проверки skill «с чистого листа».</span></label></li>
+<li><label><input type="checkbox" id="p5"><span>Обычный чат claude.ai с прикреплённым weekly-metrics.csv. Файл скачать с GitHub: data/weekly-metrics.csv. Вопрос пока не отправлять.</span></label></li>
+<li><label><input type="checkbox" id="p6"><span>Страница «Запросы урока 3» — рядом, разделы 1–4, 8.</span></label></li>
+<li><label><input type="checkbox" id="p7"><span>GitHub: репозиторий → папка homework → README (для финала).</span></label></li>
+<li><label><input type="checkbox" id="p8"><span>Telegram Desktop — если решите на финале показать создание бота в @BotFather (2 минуты).</span></label></li>
+<li><label><input type="checkbox" id="p9"><span>Режим разрешений в Code: с подтверждением — группа видит каждое действие Claude.</span></label></li>
+<li><label><input type="checkbox" id="p10"><span>Эта страница на втором экране или телефоне. Часы на виду.</span></label></li>
+</ul></div>
+<div class="row"><span class="lab key">Помнить</span><p>В 16:30 сработает автоматическая проверка готовности Moodle — она только читает. Перенос Moodle и задание ДЗ 3 в Moodle — только когда скажете. Группе: задание появится в Moodle позже, инструкции уже в репозитории.</p></div>
+</div></div>
+</section>
+
+<section id="b1">
+<div class="blk" data-from="14:00" data-to="14:05">
+<div class="bh"><span class="t">14:00–14:05 · 5 мин</span><h2>Старт</h2><span class="sl">слайды 1–2</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Говорю</span><p>30.10 не состоялось, сегодня повтор третьего занятия. Сегодня показываю вживую, а вы подсказываете: задачи, ответы, решения. Практика — дома, в домашке с Telegram-ботом.</p><p>Вопросы пишите в чат Meet сразу, как появились. В конце каждого блока разбираю. Чем больше вопросов, тем лучше занятие.</p></div>
+<div class="row"><span class="lab ask">Спрашиваю</span><p class="q">«Напишіть у чат одним реченням: що ви найчастіше просите Claude?»</p><p class="exp">Пока пишут — слайд 2. Ответы не разбирать сейчас: вернёмся к ним на слайде 17, когда будем выбирать skill.</p></div>
+<div class="row"><span class="lab pace">Темп</span><p>Ждать опоздавших до 14:03, не дольше.</p></div>
+</div></div>
+</section>
+
+<section id="b2">
+<div class="blk" data-from="14:05" data-to="14:17">
+<div class="bh"><span class="t">14:05–14:17 · 12 мин</span><h2>Домашние работы: четыре вопроса</h2><span class="sl">слайд 3</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Говорю</span><p>Четыре вопроса к любой задаче для AI. Примеры из их работ: 01 — Вишняк (чек → строка), 02 и 03 — Кирилуша и Вишняк, 04 — Веретенник и Баранков.</p><p>Главная фраза: <b>описывать задачу вы научитесь сами с практикой, а проверять результат надо учиться отдельно</b> — это вывод исследований Anthropic.</p></div>
+<div class="row"><span class="lab ask">Спрашиваю</span>
+<ul>
+<li><span class="who">Крупчинський, 3 мин</span> <span class="q">«Розкажіть, як робили синхронізацію контактів NetHunt → Ringostat і де самі поправили Claude».</span> <span class="exp">Это его автоматизация rs_contacts_daily: номера в +380, подпись «Ім'я — Компанія», каждый день. 03.11 вход прошёл с третьей попытки, и скрипт это заметил — похвалить.</span></li>
+<li><span class="who">всем</span> <span class="q">«ДЗ 2 у Moodle майже ніхто не здав. Що завадило: час, незрозуміло що робити, чи не знайшли де?»</span> <span class="exp">Не упрекать. Сказать: ДЗ 3 закрывает и второе.</span></li>
+<li><span class="who">Чумак</span> <span class="q">«Ви питали: чат чи Project?»</span> <span class="exp">Project — если работа повторяется и нужны одни и те же знания.</span></li>
+</ul></div>
+<div class="row"><span class="lab pace">Темп</span><p class="fast">Быстрее: спросить ещё двоих «що ви перевірили руками в результаті Claude?».</p><p class="slow">Медленнее: Крупчинський 2 минуты, вопрос про ДЗ 2 — одной фразой.</p></div>
+</div></div>
+</section>
+
+<section id="b3">
+<div class="blk" data-from="14:17" data-to="14:40">
+<div class="bh"><span class="t">14:17–14:40 · 23 мин</span><h2>Карта Claude, агенты и режимы Code</h2><span class="sl">слайды 4–9 · запросы, раздел 1</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Слайд 4 · 3 мин</span><p>Главная схема урока. Модель одна. Вокруг неё: где работаем (чат или Code), где знания (Project или CLAUDE.md), как делать (skills), к чему доступ (коннекторы), когда запускать (расписание).</p><p class="q">«Де у вас зараз лежать знання для Claude: у Project, у CLAUDE.md чи ніде?»</p></div>
+<div class="row"><span class="lab say">Слайды 5–6 · 4 мин</span><p>Три режима работы с Claude, у каждого свой вопрос-проверка. Почти всё из чата можно в Code, но в Code результат живёт в репозитории: его видит следующая сессия, расписание и коллега.</p><p class="q">«Хто бачив, як Claude дуже впевнено помилявся? Що ви тоді зробили?»</p></div>
+<div class="row"><span class="lab say">Слайд 7 · 2 мин</span><p>Code работает в цикле: собрал контекст → сделал → проверил. У вас так уже работает: чат → GitHub → сервер, около 60 автоматизаций за 4 месяца.</p></div>
+<div class="row"><span class="lab say">Слайд 8 · 3 мин</span><p><b>Agentic engineering: вы — руководитель.</b> Ставите цель, утверждаете план, проверяете результат. Claude Code — главный агент: делит задачу и раздаёт части субагентам. Explore ищет, Plan готовит план, свои — например рецензент — описываются файлом в .claude/agents. У каждого своя «голова», возвращают короткое резюме, тратят тот же лимит.</p><p class="q">«Яку частину вашої роботи ви б віддали окремому помічнику: пошук, перевірку чи тести?»</p></div>
+<div class="row"><span class="lab say">Слайд 9 · 3 мин</span><p>Режимы в их веб-Code — переключатель под полем запроса: <b>Plan</b> — думает и ничего не меняет, пока не утвердите; <b>Accept edits</b> — правит файлы сам, на остальное спрашивает; <b>Auto</b> — делает всё, отдельная модель-охранник останавливает рискованное. Manual есть только в приложении на компьютере. Правило: <b>новая задача — всегда с Plan</b>. Для одного запроса — <code>/plan</code> в начале.</p><p class="q">«У якому режимі ви працювали досі? Хто взагалі бачив цей перемикач?»</p></div>
+<div class="row"><span class="lab show">Показ 1 · 8 мин</span><p>Сессия Code «A» → переключить на <b>Plan</b> → второй запрос раздела 1 (скрипт по weekly-metrics.csv). Claude задаст вопросы и покажет план — <b>прочитать план вслух, спросить группу, что поправить</b>, поправить словами. Утвердить → Accept edits → результат. Затем <code>Що ти припустив, коли це робив?</code></p><p>Обычный чат с CSV — только если есть запас времени: «в чате — ответ, в Code — файл, который запустится снова».</p></div>
+<div class="row"><span class="lab ask">Спрашиваю</span><ul>
+<li><span class="q">«Що б ви змінили в цьому плані?»</span> <span class="exp">Хоть одну правку внести — пусть видят, что план правят словами.</span></li>
+<li><span class="q">«Поки Claude рахує: на якому тижні, як думаєте, найгірше?»</span> <span class="exp">Неделя 3 — 25 %.</span></li>
+<li><span class="q">«Що з вашої роботи робили б у чаті, а що в Code?»</span></li>
+</ul><p class="exp">Затем 2 минуты на вопросы из чата Meet.</p></div>
+<div class="row"><span class="lab pace">Темп</span><p class="slow">Медленнее: слайды 5–6 — 2 минуты вместе, слайд 7 — одной фразой, без чата в показе 1.</p><p class="fast">Быстрее: показать чат с тем же CSV и пусть группа задаст свой вопрос к данным.</p></div>
+</div></div>
+</section>
+
+<section id="b4">
+<div class="blk" data-from="14:40" data-to="15:00">
+<div class="bh"><span class="t">14:40–15:00 · 20 мин</span><h2>Skills и CLAUDE.md</h2><span class="sl">слайды 10–14 · запросы, раздел 2</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Слайд 10 · 3 мин</span><p>Skill — это рецепт: папка с SKILL.md. Всегда в памяти только название и описание, текст — когда задача подошла, шаблоны и скрипты — по необходимости. Поэтому сотня skills не мешает. «Проекты хранят знания, skills выполняют задачи».</p><p class="q">«Чим skill відрізняється від інструкцій у Project?»</p><p class="exp">Project — знания для чатов проекта. Skill — порядок действий, подхватывается сам, когда задача подходит, работает и в чате, и в Code.</p></div>
+<div class="row"><span class="lab say">Слайд 11 · 2 мин</span><p>Чат → skill → репозиторий → расписание. <b>Расписание = отложенный запуск skill.</b> Показ расписания — после перерыва.</p></div>
+<div class="row"><span class="lab say">Слайды 12–13 · 4 мин</span><p>Что для чего. Их CLAUDE.md — 25 КБ и просит читать ещё 1,9 МБ. <b>Отдельный CLAUDE.md на каждую автоматизацию не нужен:</b> один в корне — общие правила, до 200 строк; в папке автоматизации — только если есть особенности, он читается, лишь когда Claude работает в этой папке; процедуры — в skills. Обязательно — запись в реестре: что делает, когда, под чьим логином, владелец, как проверить.</p><p class="q">«Як думаєте, скільки з 1,9 МБ Claude реально втримає в голові?»</p></div>
+<div class="row"><span class="lab show">Слайд 14 · показ 2 · 7 мин</span><ul>
+<li>Сессия «A»: <code>Покажи skill chek-v-riadok…</code> (раздел 2). Описание — единственное, что Claude видит заранее.</li>
+<li>Сессия «B» (чистая): <code>Внеси в журнал ремонтів документ з data/chek-1.txt</code> — название skill не говорим.</li>
+<li>Опрос, затем <code>А тепер data/chek-2-vazhkyi.txt</code>.</li></ul></div>
+<div class="row"><span class="lab ask">Спрашиваю</span><ul>
+<li><span class="q">«Що зробить Claude з розмитим чеком: вгадає чи поставить "?"? Реакція: 👍 — поставить "?", 👎 — вгадає».</span></li>
+<li><span class="q">«Хто з вас уже вдруге пояснював Claude один і той самий формат?»</span> <span class="exp">Признак, что пора делать skill.</span></li>
+</ul></div>
+<div class="row"><span class="lab pace">Темп</span><p class="slow">Медленнее: слайд 12 пропустить, сразу 13; в показе 2 только трудный чек.</p><p class="fast">Быстрее: пусть группа придумает ещё более трудный случай (два чека в одном файле, сумма прописью) и попробуйте.</p></div>
+<div class="row"><span class="lab key">Перед перерывом</span><p class="q">«На перерві напишіть у чат: що ви пояснювали Claude більше двох разів? Після перерви з цього зберемо skill».</p></div>
+</div></div>
+</section>
+
+<section id="brk">
+<div class="blk" data-from="15:00" data-to="15:10">
+<div class="bh"><span class="t">15:00–15:10</span><h2>Перерыв</h2><span class="sl">слайд 17 на экране</span></div>
+<div class="rows"><div class="row"><span class="lab key">Сделать</span><p>Прочитать ответы в чате Meet — пригодятся, если останется время на skill по их задаче. Новая сессия «A» на репозитории, режим Plan. Если не успеваете по времени — посмотреть, что резать во втором часе (жёлтые строки ниже).</p></div></div>
+</div>
+</section>
+
+<section id="b5">
+<div class="blk" data-from="15:10" data-to="15:32">
+<div class="bh"><span class="t">15:10–15:32 · 22 мин</span><h2>Артефакты и «Мої задачі» вживую</h2><span class="sl">слайды 15–16 · запросы, раздел 10</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Слайд 15 · 3 мин</span><p>Артефакт — живая страница, которую Claude публикует из беседы: ссылка на claude.ai, открывается с компьютера и с телефона. Видит только ваш аккаунт, пока не поделитесь (у них общий — видят все). Обновляется по тому же адресу, когда Claude публикует новую версию — по просьбе или по расписанию. Не сервер: посмотреть и отметить — артефакт, работать ночью — cron или расписание.</p></div>
+<div class="row"><span class="lab ask">Слайд 16 · 3 мин</span><p>Сначала спросить, не показывая правую колонку: <span class="q">«Що з цього cron, що розклад Claude, що skill?»</span></p><p class="exp">Страница — артефакт. «Додай Олені…» — skill dodaty-zadachu. Бустер каждые 15 минут — cron. Голос в Telegram — бот на сервере работает постоянно. План дня в 8:07 — расписание Claude.</p></div>
+<div class="row"><span class="lab show">Показ 3 · 12 мин</span><p>Сессия «A» <b>в режиме Plan</b>, первый запрос раздела 10: дашборд из data/moi-zadachi.json, data/bbooster-zadachi.json, data/komanda.json. Пока Claude спрашивает — <b>отвечает группа</b>: что считать срочным, как показывать задачи из Бустера, что видно на телефоне. Утвердить план → получить ссылку → открыть на телефоне. Попросить в плане, чтобы задачи можно было добавлять и отмечать прямо на странице и они сохранялись.</p><p class="q">«Що з ваших таблиць ви б хотіли бачити так — з телефона, одним екраном?»</p><p>Сказать: <b>дома каждый делает такой список для себя — шаг 5 домашки</b>. Голос, Бустер и план дня добавим на следующих занятиях.</p></div>
+<div class="row"><span class="lab show">Показ 4 · 3 мин</span><p>В той же сессии: <code>Додай Олені задачу: завтра до обіду терміново передзвонити в Епіцентр</code> — сработает skill dodaty-zadachu, файл обновится, Claude опубликует новую версию по той же ссылке. Обновить страницу на телефоне.</p><p>Голосом через Claude: в приложении Claude на телефоне — микрофон в поле ввода, та же фраза.</p></div>
+<div class="row"><span class="lab say">Расписание · 1 мин</span><p>Словами, без создания: «Щоранку о 8:07 Claude перечитує задачі, оновлює цю сторінку і пише кожному три головні — це розклад Claude. А задачі з Бустера тягне cron на сервері».</p></div>
+<div class="row"><span class="lab pace">Темп</span><p class="slow">Медленнее: в показе 3 не отвечать на все вопросы Claude — утвердить план как есть; показ 4 пропустить.</p><p class="fast">Быстрее: создать расписание обновления дашборда и поставить на паузу; потом слайды 17–19 — skill по их задаче.</p></div>
+</div></div>
+</section>
+
+<section id="b6">
+<div class="blk" data-from="15:32" data-to="15:50">
+<div class="bh"><span class="t">15:32–15:50 · 18 мин</span><h2>Их автоматизации</h2><span class="sl">слайды 20–26</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Слайд 20 · 3 мин</span><p>Правило, правило + шаг AI, агент. Чем дешевле и предсказуемее, тем лучше; AI только там, где надо понять текст.</p><p class="q">«Ваша автоматизація — правило, правило + AI чи агент?»</p><p class="exp"><span class="who">Геков</span> — у него больше всех с AI, а daily_report вообще без Claude: хороший пример. <span class="who">Турбал</span> — почта k1 → задачи: правило + AI.</p></div>
+<div class="row"><span class="lab say">Слайд 21 · 2 мин</span><p>«Завершился ≠ сделал». Без имён. Контроль задач неделями не входил в Бустер, а в логе «помилок 0».</p><p class="q">«Як ви дізнаєтесь, що ваша автоматизація сьогодні спрацювала? Хто останній раз це перевіряв?»</p></div>
+<div class="row"><span class="lab say">Слайд 22 · 3 мин</span><p>Сначала похвалить: около 60 автоматизаций за 4 месяца людьми без программирования — много, и многие решения правильные. Потом три случая.</p><p class="q">«Хто стикався, що автоматизація раптом почала працювати від чужого імені?»</p><p class="q">«Які листи можна відсіяти правилом, ще до Claude?»</p><p class="exp">Людей не называть, пусть отвечают сами. Почта → задачи: около $60 из $174 расходов на API до 07.10.</p></div>
+<div class="row"><span class="lab say">Слайд 23 · 1 мин</span><p>Пять вопросов до запуска. Что будет в корпоративном Claude: своя папка, ключи и логи на каждую автоматизацию, предупреждение, если автоматизация молчит дольше нормы, владелец у каждой. Говорить «так будет».</p><p class="q">«Що буде, якщо завтра людина, під чиїм логіном працює автоматизація, змінить пароль?»</p></div>
+<div class="row"><span class="lab say">Слайд 24 · 3 мин</span><p><b>От задачи до автоматизации:</b> 1 — Plan: Claude расспрашивает и предлагает шаги, вы правите план, а не код; 2 — Accept edits: сделать задачу один раз; 3 — проверить: «що ти припустив», «зламай навмисно», одну цифру руками; 4 — только потом на часы: правило → cron, прочитать и написать → расписание Claude, и снова с плана. «Не автоматизуйте те, що жодного разу не спрацювало руками». Так же делается ДЗ.</p><p class="q">«Хто вже автоматизував щось, що жодного разу не перевірив руками?»</p></div>
+<div class="row"><span class="lab say">Слайд 25 · 3 мин</span><p>Почти все их расписания правильно сделаны на cron. Чёткое правило — Claude один раз пишет код, cron запускает. Прочитать и написать — расписание Claude. Лучше всего вместе: скрипт считает, Claude объясняет.</p><ul>
+<li><span class="who">Баранков</span> <span class="q">«У вас і cron-нагадування, і щоденний звіт від Claude. Чим вони для вас відрізняються?»</span></li>
+<li><span class="who">Веретенник</span> <span class="q">«Моніторинг змін законів раз на місяць — зробити розкладом Claude з чернеткою для вас?»</span></li></ul></div>
+<div class="row"><span class="lab ask">Слайд 26 · квиз · 4 мин</span><p>«Куди?» Зачитываете пункт, группа пишет в чат: cron, Claude, skill или без AI. Ответы — в разделе «Ответы к показам».</p></div>
+<div class="row"><span class="lab pace">Темп</span><p class="slow">Медленнее: на слайде 19 один случай, слайд 20 — минута, в квизе 4 пункта из 8, слайд 24 — 1 минута.</p><p class="fast">Быстрее: слайд 29 «Глибше» — пусть выберут один вопрос (запросы, раздел 9), или слайд 27 «Дослідження».</p></div>
+</div></div>
+</section>
+
+<section id="b7">
+<div class="blk" data-from="15:50" data-to="16:00">
+<div class="bh"><span class="t">15:50–16:00 · 10 мин</span><h2>Домашка 3 и финал</h2><span class="sl">слайд 28 · запросы, раздел 8</span></div>
+<div class="rows">
+<div class="row"><span class="lab say">Говорю</span><p>Две автоматизации, которые работают без вас, и бот, который каждое утро пишет отчёт. Шаг 2 — cron на рабочем сервере, как все ваши автоматизации: в Code на рабочем репозитории <b>сначала режим Plan</b>, описываете отчёт, утверждаете план, токен можно вставить прямо в запрос. Данные настоящие: NetHunt, Бустер, Ringostat, таблицы. Шаг 3 — задача Claude по расписанию, название «ДЗ3 · Фамилия · …».</p><p>Срок — четверг 12.11, 23:59. Задание появится в Moodle, инструкции уже в репозитории, папка homework.</p></div>
+<div class="row"><span class="lab show">Показываю</span><p>GitHub → homework/README: таблица шагов, что сдать. Затем запрос шага 2 из раздела 8 страницы запросов.</p><p>По желанию, 2 минуты: Telegram → @BotFather → <code>/newbot</code> → имя → адрес на <code>bot</code> → токен. Пусть видят, что это быстро.</p></div>
+<div class="row"><span class="lab ask">Спрашиваю</span><p class="q">«Напишіть у чат одним рядком: який звіт ви хочете отримувати щоранку?»</p><p class="exp">Так каждый уходит с решением. Затем последние вопросы из чата.</p></div>
+<div class="row"><span class="lab pace">Темп</span><p>Домашку не резать меньше 7 минут. Если тянется — вопросы перенести в чат группы.</p></div>
+</div></div>
+</section>
+
+<h3 class="sub" id="faq">Их вероятные вопросы и короткие ответы</h3>
+<div class="blk tw"><table>
+<thead><tr><th>Вопрос</th><th>Ответ</th></tr></thead>
+<tbody>
+<tr><td>Що таке артефакт і хто його бачить?</td><td>Живая страница по ссылке на claude.ai, её публикует Claude. Видна аккаунту, который её сделал, пока не поделитесь. Аккаунт у вас общий — значит видят все в нём.</td></tr>
+<tr><td>Дашборд оновлюється сам?</td><td>Когда Claude публикует новую версию: по вашей просьбе или из задачи по расписанию. Записи на самой странице (галочки, новые задачи) сохраняются, если попросить об этом при создании. Живые данные из Drive или Gmail — через коннекторы.</td></tr>
+<tr><td>А голосом можна?</td><td>Да: микрофон клавиатуры на телефоне в поле страницы или в приложении Claude; для Telegram — бот на сервере, голос в текст переводит отдельный сервис распознавания.</td></tr>
+<tr><td>Обов'язково робити CLAUDE.md для кожної автоматизації?</td><td>Нет. Один CLAUDE.md в корне с общими правилами, до 200 строк. В папке автоматизации — только если есть особенности, он читается, лишь когда Claude там работает. Обязательна запись в реестре: что делает, когда, под чьим логином, владелец, как проверить.</td></tr>
+<tr><td>Який режим ставити?</td><td>Новая задача — Plan. Утвердили план — Accept edits, чтобы видеть шаги, или Auto для длинной задачи с понятным направлением.</td></tr>
+<tr><td>Що таке субагенти і чи треба їх створювати?</td><td>Помощники главного агента со своей «головой». Explore и Plan Claude зовёт сам. Свои стоит делать, когда снова и снова нужна одна и та же роль — например рецензент автоматизаций.</td></tr>
+<tr><td>Скільки коштує розклад Claude?</td><td>Входит в план, тратит тот же лимит, что и чат. Облачные задачи — не чаще раза в час. Cron на сервере почти бесплатный.</td></tr>
+<tr><td>Чим skill відрізняється від Project?</td><td>Project — знания для чатов проекта. Skill — порядок действий, включается сам, когда задача подходит, работает и в чате, и в Code.</td></tr>
+<tr><td>Чи можна зробити skill у звичайному чаті?</td><td>Да: «збережи це як skill» — Claude напишет SKILL.md. В Code его кладём в .claude/skills репозитория, тогда его видят все сессии и расписание.</td></tr>
+<tr><td>Чому не робити все через Claude за розкладом?</td><td>Дороже, медленнее, без памяти между запусками и не чаще раза в час. Чёткие правила надёжнее кодом. Claude — там, где надо понять текст и написать вывод.</td></tr>
+<tr><td>Хмарна задача чи задача в додатку на комп'ютері?</td><td>Облачная работает, даже когда компьютер выключен, раз в час или реже. В приложении — на вашем компьютере, чаще, но только пока он включён.</td></tr>
+<tr><td>Чи бачать колеги мої skills і задачі?</td><td>Аккаунт общий — да, видят все. Поэтому в названии фамилия.</td></tr>
+<tr><td>Що якщо Claude поставить cron не на той час?</td><td>Спросить: «покажи рядок розкладу і наступний запуск за Києвом». Cron на сервере считает время по UTC: 9:05 по Киеву зимой — 7:05 UTC.</td></tr>
+<tr><td>Скільки skills можна мати?</td><td>Много: заранее Claude читает только названия и описания. Мешают не skills, а длинный CLAUDE.md.</td></tr>
+<tr><td>Чому мій skill не спрацював?</td><td>Почти всегда описание: в нём должны быть слова, которыми вы сами просите. Проверять в новой сессии, не называя skill.</td></tr>
+<tr><td>Що таке репозиторій простими словами?</td><td>Общая папка на GitHub с историей изменений. Code работает прямо в ней, и всё, что там лежит, видит следующая сессия.</td></tr>
+<tr><td>n8n чи Claude?</td><td>Следующее занятие. n8n, Make, Zapier — когда надо соединить сервисы готовыми блоками. Claude — когда надо понять текст или принять решение.</td></tr>
+<tr><td>Як зробити, щоб бот писав у групу?</td><td>Добавить бота в группу, написать там что угодно и сказать Claude — он найдёт номер группы.</td></tr>
+<tr><td>Codex чи Claude Code — у чому різниця?</td><td>Похожие агенты. Принципы те же: контекст, инструкции, проверка результата. Мы работаем в Claude, потому что вся ваша система уже на нём.</td></tr>
+</tbody></table></div>
+
+<h3 class="sub" id="keys">Ответы к показам</h3>
+<div class="blk tw"><table>
+<thead><tr><th>Показ</th><th>Правильный ответ</th></tr></thead>
+<tbody>
+<tr><td>1 · weekly-metrics.csv</td><td>Доля опозданий: нед. 1 — 20 %, 2 — 8,3 %, <b>3 — 25 % (худшая)</b>, 4 — 10 %, 5 — 21,4 %, 6 — 20 %, 7 — 8,3 %, 8 — 14,3 %. Всего 14 опозданий на 90 заказов = 15,6 %. Чем Claude мог «допустить»: что опоздания входят в число заказов, что недели идут подряд.</td></tr>
+<tr><td>2 · chek-1</td><td><code>12.10.2026 | АА1234ВВ | 184200 | заміна моторної оливи, масляного фільтра, діагностика ходової | олива 5W-30 5 л, фільтр масляний | 3450</code></td></tr>
+<tr><td>2 · chek-2 (трудный)</td><td>Дата «?» (видно только «2?.10.2026»), номер «?», пробег «?», работы: шиномонтаж 4 колёс, балансировка, запчасти «?» или «—», сумма 1200. Если Claude угадал дату или номер — это повод для правки skill прямо в эфире.</td></tr>
+<tr><td>4 · tyzhnevyi-zvit</td><td>Неделя 8: 14 заказов, 2 опоздания, 14,3 %. Неделя 7: 12 и 1, 8,3 %. В среднем 11,25 заказа в неделю, доля опозданий 15,6 %. Проверить руками: 2 / 14 = 14,3 %.</td></tr>
+<tr><td>Квиз · слайд 26</td><td>Письмо → задача каждые 2 мин — cron + короткий вызов AI. Заказы Эпицентра — cron. Просроченные лиды → задача — cron, без AI. Процент растущих статистик — без AI, формула. Утренний PR-пакет — расписание Claude. Новые законы раз в месяц — найти изменения: Claude, поставить задачи: cron. Чек → строка — skill вручную.</td></tr>
+<tr><td>Глибше · «Чому не прийшло?»</td><td>В журнале 4 проблемы: календарь отчётности — каждый день «ok», но успеха нет с 02.11; контроль рекламаций — успех был 21.10; тарифы — ошибка; дни рождения — ни разу не запускались.</td></tr>
+</tbody></table></div>
+
+<h3 class="sub" id="rescue">Если что-то не так</h3>
+<div class="blk"><div class="rows">
+<div class="row"><span class="lab pace">Тишина</span><p>Вызвать по имени (вопросы с <span class="who">именем</span> выше). Или опрос реакциями Meet: «👍 — так, 👎 — ні». Или «Напишіть у чат одне слово».</p></div>
+<div class="row"><span class="lab pace">Claude думает</span><p>Не молчать. «Поки Claude працює: що ви перевірите першим у його відповіді?», «Як би ви зробили це без Claude і скільки б це зайняло?», «Хто вже робив щось схоже?»</p></div>
+<div class="row"><span class="lab pace">Claude ошибся</span><p>Это лучший момент урока. Спросить группу: «Що тут не так? Як би ви це помітили, якби не дивились?» Потом поправить skill вслух.</p></div>
+<div class="row"><span class="lab pace">Code не открылся</span><p>Показывать в обычном чате: «збережи як skill» → Claude пишет SKILL.md. Файлы skills показать на GitHub: .claude/skills.</p></div>
+<div class="row"><span class="lab pace">Лимит кончился</span><p>Перейти на свой аккаунт Claude, репозиторий тот же.</p></div>
+<div class="row"><span class="lab pace">Отстаю на 10+ мин</span><p>Резать по порядку: слайд 12, чат в показе 1, слайд 22 до одного случая, квиз до 4 пунктов, показ расписания до показа страницы. Домашку и вопросы не резать.</p></div>
+</div></div>
+</main>
+</div>
+
+<script>
+(function () {
+  var toMin = function (s) { var p = s.split(':'); return +p[0] * 60 + +p[1]; };
+  var plan = [
+    ['13:30', '14:00', 'подготовка: вкладки и проверка Code'],
+    ['14:00', '14:05', 'старт · слайды 1–2'],
+    ['14:05', '14:17', 'домашки · слайд 3'],
+    ['14:17', '14:40', 'карта, агенты, режимы · слайды 4–9, показ 1 в Plan'],
+    ['14:40', '15:00', 'skills и CLAUDE.md · слайды 10–14, показ 2'],
+    ['15:00', '15:10', 'перерыв'],
+    ['15:10', '15:32', 'артефакты и «Мої задачі» вживую · слайды 15–16'],
+    ['15:32', '15:50', 'автоматизации · слайды 20–26'],
+    ['15:50', '16:00', 'домашка 3 · слайд 28']
+  ];
+  function tick() {
+    var d = new Date();
+    var hh = String(d.getHours()).padStart(2, '0'), mm = String(d.getMinutes()).padStart(2, '0');
+    document.getElementById('clock').textContent = hh + ':' + mm;
+    var now = d.getHours() * 60 + d.getMinutes(), text = now < toMin('13:30') ? 'урок ещё не начался' : 'урок закончился';
+    plan.forEach(function (p) {
+      if (now >= toMin(p[0]) && now < toMin(p[1])) text = p[2] + ' · осталось ' + (toMin(p[1]) - now) + ' мин';
+    });
+    document.getElementById('planNow').textContent = text;
+    document.querySelectorAll('[data-from]').forEach(function (el) {
+      var on = now >= toMin(el.dataset.from) && now < toMin(el.dataset.to);
+      el.classList.toggle('now', on);
+    });
+  }
+  tick(); setInterval(tick, 20000);
+  document.querySelectorAll('#prepList input').forEach(function (box) {
+    try { box.checked = localStorage.getItem('rs-' + box.id) === '1'; } catch (e) {}
+    box.addEventListener('change', function () { try { localStorage.setItem('rs-' + box.id, box.checked ? '1' : '0'); } catch (e) {} });
+  });
+})();
+</script>
+</body></html>

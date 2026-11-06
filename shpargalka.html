@@ -1,0 +1,133 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Шпаргалка урока 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Unbounded:wght@900&display=swap">
+<style>
+/* Один экран: полоса правил и сквозная мысль, сетка блоков по времени, низ — запреты и запасной план. AXAL One, тёмная тема. */
+:root {
+  --page: #08080B; --panel: #13121C; --line: #232130; --line-strong: #3A3650;
+  --ink: #EFEDFA; --ink-2: #B4AFC8; --ink-3: #918CA9;
+  --accent: #8B5CF6; --accent-text: #A78BFA; --live: #22D3EE; --warn: #FBBF24; --danger: #F87171;
+  --ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --display: "Unbounded", "Arial Black", sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { background: var(--page); color: var(--ink); font-family: var(--ui); font-size: 13px; line-height: 1.35; margin: 0;
+  padding-block: 12px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); box-sizing: border-box; }
+.wrap { display: flex; flex-direction: column; gap: 8px; max-width: 1640px; margin: 0 auto; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+h1 { font-family: var(--display); font-weight: 900; font-size: 19px; text-transform: uppercase; margin: 0; }
+h1 span { color: var(--accent); }
+.rules { display: flex; flex-wrap: wrap; gap: 6px; }
+.rule { font-family: var(--mono); font-size: 12px; border: 1px solid var(--accent); padding: 2px 8px; }
+.rule.w { border-color: var(--warn); }
+.thread { font-size: 13px; color: var(--ink-2); border-left: 3px solid var(--live); padding: 2px 10px; }
+.thread b { color: var(--ink); }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.blk { background: var(--panel); border: 1px solid var(--line); padding: 9px 11px; display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.blk.key { border-color: var(--accent); }
+.top { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.t { font-family: var(--mono); font-size: 12px; color: var(--accent-text); white-space: nowrap; }
+.sl { font-family: var(--mono); font-size: 11px; color: var(--ink-3); white-space: nowrap; }
+h2 { font-size: 15px; font-weight: 600; margin: 0; }
+.row { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 6px; }
+.lab { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); padding-top: 2px; }
+.lab.s { color: var(--live); } .lab.a { color: var(--warn); }
+.row p { margin: 0; color: var(--ink-2); }
+.row p b { color: var(--ink); font-weight: 600; }
+.q { font-family: var(--mono); font-size: 12px; color: var(--accent-text); }
+footer { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.note { border-top: 2px solid var(--line-strong); padding-top: 5px; color: var(--ink-2); min-width: 0; }
+.note h3 { font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 3px; color: var(--ink-3); font-weight: 500; }
+.note.d { border-top-color: var(--danger); } .note.d h3 { color: var(--danger); }
+.note.l { border-top-color: var(--live); } .note.l h3 { color: var(--live); }
+.note p { margin: 0; }
+.note b { color: var(--ink); }
+@media (max-width: 1100px) { .grid, footer { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .grid, footer { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+<header>
+  <h1>Урок 3<span>.</span> 14:00–16:00</h1>
+  <div class="rules">
+    <span class="rule">Вопросы — в чат Meet, разбор в конце блока</span>
+    <span class="rule">Показываю я, группа диктует</span>
+    <span class="rule">Домашку не режу</span>
+    <span class="rule w">Без имён в разборе сбоев</span>
+  </div>
+</header>
+<p class="thread">Сквозная мысль: <b>чат → Code → skill (инструкция) → расписание (отложенный запуск skill)</b>. Порядок любой автоматизации: <b>Plan → сделать раз → проверить → на часы</b>. CLAUDE.md — один в корне, не на каждую автоматизацию. Project — знания, skill — как делать, коннектор — доступ, расписание — когда. Запросы — на странице «Запросы урока 3».</p>
+
+<section class="grid">
+  <article class="blk">
+    <div class="top"><span class="t">14:00 · 5′</span><span class="sl">сл. 1–2</span></div>
+    <h2>Старт</h2>
+    <div class="row"><span class="lab">Говорю</span><p>30.10 не состоялось. Сегодня: ДЗ → чат и Code → <b>skills → расписание</b> → их автоматизации. Бот — в ДЗ 3; коннектор, ERP — позже; n8n/Make/Zapier — в следующий раз</p></div>
+  </article>
+
+  <article class="blk">
+    <div class="top"><span class="t">14:05 · 12′</span><span class="sl">сл. 3</span></div>
+    <h2>ДЗ: 4 вопроса</h2>
+    <div class="row"><span class="lab">Говорю</span><p>Отдать AI · описать · <b>проверить</b> · кто отвечает. Описывать учатся сами, проверять — надо учить</p></div>
+    <div class="row"><span class="lab s">Примеры</span><p>Вишняк (чек → строка), Кирилуша (пилот + ручной расчёт), Веретенник (локальный файл)</p></div>
+    <div class="row"><span class="lab a">Спрос</span><p>ДЗ 2 — 0 сдач: что помешало? Чумак: чат или Project</p></div>
+  </article>
+
+  <article class="blk">
+    <div class="top"><span class="t">14:17 · 23′</span><span class="sl">сл. 4–9</span></div>
+    <h2>Карта, агенты, режимы Code</h2>
+    <div class="row"><span class="lab">Говорю</span><p>Модель одна. <b>Почти всё из чата можно в Code; Code — для того, что живёт дольше разговора.</b> «Проекты» в Code — другое (параллельные сессии, бета, не Team)</p></div>
+    <div class="row"><span class="lab s">Показ</span><p>Сл. 8: вы — руководитель, субагенты. Сл. 9: Plan · Accept edits · Auto. weekly-metrics в Code <b>в режиме Plan</b>: план вслух → правка → утвердить</p></div>
+    <div class="row"><span class="lab a">Спрос</span><p class="q">&gt; Що ти припустив?</p></div>
+  </article>
+
+  <article class="blk key">
+    <div class="top"><span class="t">14:40 · 20′</span><span class="sl">сл. 10–14</span></div>
+    <h2>Skills → расписание</h2>
+    <div class="row"><span class="lab">Говорю</span><p>Skill = рецепт; в памяти только <b>название и описание</b>. <b>Расписание = отложенный запуск skill.</b> Skill из чата → файл в .claude/skills → видит любая сессия и расписание</p></div>
+    <div class="row"><span class="lab s">Показ</span><p>Готовый chek-v-riadok → новая сессия: chek-1 → опрос 👍/👎 → трудный чек</p></div>
+    <div class="row"><span class="lab a">Спрос</span><p>Перед перерывом: что объясняли Claude больше двух раз? — в чат</p></div>
+  </article>
+
+  <article class="blk">
+    <div class="top"><span class="t">15:00 · 10′</span><span class="sl">—</span></div>
+    <h2>Перерыв</h2>
+    <div class="row"><span class="lab">Готовлю</span><p>Прочитать ответы в чате, выбрать 2–3 кандидата на skill. Новая сессия «B»</p></div>
+  </article>
+
+  <article class="blk key">
+    <div class="top"><span class="t">15:10 · 22′</span><span class="sl">сл. 15–16</span></div>
+    <h2>Артефакты → «Мої задачі» вживую</h2>
+    <div class="row"><span class="lab">Говорю</span><p>Артефакт = живая страница по ссылке, комп и телефон, обновляется новой версией. Не сервер</p></div>
+    <div class="row"><span class="lab s">Показ</span><p>Строим «Мої задачі» в Code <b>в Plan</b> (раздел 10), группа отвечает на вопросы Claude; потом skill «Додай Олені…». Дома каждый делает свой — шаг 5 ДЗ</p></div>
+    <div class="row"><span class="lab a">Спрос</span><p>Сл. 16: что тут cron, что Claude, что skill? Отстаю → утвердить план как есть, без skill</p></div>
+  </article>
+
+  <article class="blk">
+    <div class="top"><span class="t">15:32 · 18′</span><span class="sl">сл. 20–24</span></div>
+    <h2>Их автоматизации</h2>
+    <div class="row"><span class="lab">Говорю</span><p>Правило · правило + AI · агент. ~60 штук за 4 месяца — это много, многое правильно. <b>Завершился ≠ сделал</b></p></div>
+    <div class="row"><span class="lab s">Показ</span><p>Схема «запуск → завершился → результат?», три случая (срез 03.11), 5 вопросов</p></div>
+    <div class="row"><span class="lab a">Спрос</span><p>Как вы узнаёте, что ваша сработала сегодня? <span class="q">&gt; Зламай це навмисно</span></p></div>
+  </article>
+
+  <article class="blk">
+    <div class="top"><span class="t">15:40 · 20′</span><span class="sl">сл. 25–26 · ДЗ сл. 28 в 15:50</span></div>
+    <h2>Cron или расписание → ДЗ</h2>
+    <div class="row"><span class="lab">Говорю</span><p>Чёткое правило → <b>Claude один раз пишет код, cron запускает</b>. Прочитать и подумать → расписание Claude (от 1 ч, без памяти, лимит)</p></div>
+    <div class="row"><span class="lab s">Ответы</span><p>Почта, Эпицентр, лиды → cron · статистики → без AI · PR-пакет → Claude · законы → Claude + cron · чек → skill</p></div>
+    <div class="row"><span class="lab a">ДЗ</span><p><b>Бот + cron на сервере в 9:05 + задача Claude + описание</b> → Moodle: скрин, @бот, скрин задачи, файл. Всё в homework/</p></div>
+  </article>
+</section>
+
+<footer>
+  <div class="note d"><h3>Не показывать</h3><p>Имена авторов сбоев. Технику доступа к серверу.</p></div>
+  <div class="note"><h3>Если не успеваю</h3><p>Режу демо расписания и Research → урок 4. ДЗ — 3 мин: слайд 24 + homework/README. Practice и 5 вопросов оставляю.</p></div>
+  <div class="note"><h3>Если «уже знаем»</h3><p>Слайд 29 «Глибше»: «чому не прийшло», «цифри без висновків», «Claude забуває правила», «як перевірити». Запросы — раздел 9.</p></div>
+  <div class="note"><h3>Если репо не открылся</h3><p>Работают в чате: «збережи як skill» → копируют SKILL.md. Вы показываете на своём аккаунте.</p></div>
+  <div class="note l"><h3>После</h3><p>Дата отзывов на ДЗ 1. <b>17:00 перенос Moodle</b> — дать слово.</p></div>
+</footer>
+</div>
+</body></html>

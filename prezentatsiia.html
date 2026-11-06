@@ -1,0 +1,849 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Заняття 3 · презентація</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Unbounded:wght@900&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#000;overflow:hidden}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+section{width:1920px;height:1080px;position:absolute;left:50%;top:50%;transform-origin:center center;display:none!important;overflow:hidden}
+section.on{display:flex!important}
+section aside{display:none}
+#bar{position:fixed;right:14px;bottom:10px;font:12px "Geist Mono",monospace;color:#5b5670;z-index:5;user-select:none}
+#notes{position:fixed;left:0;right:0;bottom:0;max-height:38vh;overflow:auto;background:#13121Cf2;color:#EFEDFA;font:16px/1.5 Geist,Arial,sans-serif;padding:14px 18px;border-top:2px solid #8B5CF6;display:none;z-index:6}
+#notes.show{display:block}
+#help{position:fixed;left:14px;bottom:10px;font:12px "Geist Mono",monospace;color:#5b5670;z-index:5}
+@media print{
+ @page{size:1920px 1080px;margin:0}
+ html,body{height:auto;overflow:visible;background:#000}
+ #stage{position:static;display:block}
+ section{display:flex!important;position:relative;left:0;top:0;transform:none!important;page-break-after:always;break-after:page}
+ #bar,#notes,#help{display:none!important}
+}
+</style></head><body>
+<div id="stage">
+<section data-n="1" id="cover" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;flex-direction:row;align-items:center;gap:6px">
+<p style="font-family:'Archivo Black', 'Arial Black', sans-serif;font-size:40px;line-height:1;color:#EFEDFA">AXAL</p>
+<div style="width:11px;height:11px;background:#8B5CF6;align-self:end"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:40px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#A78BFA">&gt; AGT PLUS · AI-практикум</p>
+<h1 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:136px;font-weight:900;line-height:1.05;text-transform:uppercase;color:#EFEDFA">Заняття 3<span style="color:#8B5CF6">.</span></h1>
+<p style="font-size:48px;line-height:1.3;color:#B4AFC8">Claude Code, skills і ваші автоматизації</p>
+</div>
+<p style="font-size:28px;color:#918CA9">6 листопада 2026 · AGT PLUS × AXAL</p>
+<aside>Поздороваться. Сказать, что 30.10 не состоялось, Сегодня показываю вживую, практика — дома в ДЗ. Вопросы пишите в чат Meet сразу, отвечаю в конце каждого блока.</aside>
+</section>
+<section data-n="2" id="plan" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:64px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Сьогодні<span style="color:#8B5CF6">.</span></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">14:05</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Ваші домашні роботи</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Що вийшло і як перевіряти результат</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">14:17</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Чат, Code, режими</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Карта Claude, агенти і режим плану</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">14:40 · наживо</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Skills і артефакти</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Інструкція, яку Claude запускає сам. Збираємо «Мої задачі» наживо</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">15:30</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Ваші автоматизації</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Які бувають, що ламається, cron чи розклад Claude</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#B4AFC8">Головне сьогодні — <span style="color:#EFEDFA">ваші питання</span>. Пишіть у чат Meet одразу, розбираємо в кінці кожного блоку. Практика — вдома, у ДЗ.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · перерва 15:00–15:10 · 15:50 домашня робота</p>
+<aside>Telegram-боты, свой коннектор и ERP — на следующих занятиях. В следующий раз: n8n, Make, Zapier. Research и «Глибше» — только если идём быстрее.</aside>
+</section>
+<section data-n="3" id="hw" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Чотири питання<span style="color:#8B5CF6">.</span></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">01</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Що віддати AI?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Спершу чек → рядок таблиці. Повна автоматизація — потім</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">02</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Як описати?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Точне правило і винятки, а не загальне бажання</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">03</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Як перевірити?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Паралельний ручний розрахунок. «?» замість здогадки</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">04</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Хто відповідає?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Які дані куди можна. Файл локально, а не в хмарі</p>
+</div>
+</div>
+<div style="background:#13121C;border-left:4px solid #8B5CF6;padding:40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:40px;font-weight:600;line-height:1.3;color:#EFEDFA">Описувати задачу ви вчитеся самі з практикою. Перевіряти результат треба вчитися окремо.</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#918CA9">&gt; висновок досліджень Anthropic про те, як люди працюють з Claude</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 3</p>
+<aside>Примеры: 01 Вишняк, 02 Кирилуша, 03 Кирилуша и Вишняк, 04 Веретенник и Баранков. Крупчинський — 3 минуты сам. Ответ Чумак: чат или Project — Project, если работа повторяется. ДЗ 2: в Moodle 0 сдач — спросить, что помешало.</aside>
+</section>
+<section data-n="4" id="map" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:24px">
+<x-connector x1="760" y1="600" x2="588" y2="400" head="none" style="color:#3A3650;border-width:2px"></x-connector>
+<x-connector x1="1160" y1="600" x2="1332" y2="400" head="none" style="color:#3A3650;border-width:2px"></x-connector>
+<x-connector x1="760" y1="640" x2="588" y2="800" head="none" style="color:#3A3650;border-width:2px"></x-connector>
+<x-connector x1="1160" y1="640" x2="1332" y2="800" head="none" style="color:#3A3650;border-width:2px"></x-connector>
+<x-connector x1="960" y1="550" x2="960" y2="430" head="none" style="color:#3A3650;border-width:2px"></x-connector>
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Карта Claude<span style="color:#8B5CF6">.</span></h2>
+<div style="position:absolute;left:760px;top:550px;width:400px;height:140px;background:#7040CD;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:40px;font-weight:900;color:#FFFFFF">CLAUDE</p>
+<p style="font-size:24px;color:#EFEDFA">одна модель</p>
+</div>
+<div style="position:absolute;left:128px;top:320px;width:460px;background:#13121C;border:1px solid #3A3650;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">ЧАТ</p>
+<p style="font-size:28px;font-weight:600;color:#EFEDFA">Розмова і файли</p>
+<p style="font-size:24px;color:#B4AFC8">Знання — у Project</p>
+</div>
+<div style="position:absolute;left:1332px;top:320px;width:460px;background:#13121C;border:2px solid #8B5CF6;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">CODE</p>
+<p style="font-size:28px;font-weight:600;color:#EFEDFA">Папка або репозиторій</p>
+<p style="font-size:24px;color:#B4AFC8">Правила — у CLAUDE.md</p>
+</div>
+<div style="position:absolute;left:128px;top:720px;width:460px;background:#13121C;border:1px solid #3A3650;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">SKILLS</p>
+<p style="font-size:28px;font-weight:600;color:#EFEDFA">Як робити</p>
+<p style="font-size:24px;color:#B4AFC8">Працюють і в чаті, і в Code</p>
+</div>
+<div style="position:absolute;left:1332px;top:720px;width:460px;background:#13121C;border:1px solid #3A3650;padding:28px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">РОЗКЛАД</p>
+<p style="font-size:28px;font-weight:600;color:#EFEDFA">Коли запускати</p>
+<p style="font-size:24px;color:#B4AFC8">Claude сам, без вас</p>
+</div>
+<div style="position:absolute;left:730px;top:260px;width:460px;background:#13121C;border:1px solid #3A3650;padding:24px 32px;display:flex;flex-direction:column;gap:6px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">КОНЕКТОРИ</p>
+<p style="font-size:28px;font-weight:600;color:#EFEDFA">Доступ: Drive, Gmail, GitHub</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · що знати · як робити · до чого доступ · коли запускати</p>
+<aside>Главная схема занятия. Модель одна; вокруг неё: где работаем (чат или Code), где лежат знания (Project / CLAUDE.md), как делать (skills), к чему доступ (коннекторы), когда запускать (расписание). Дальше каждый узел раскрываем.</aside>
+</section>
+<section data-n="5" id="modes" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Чат, задача, Code<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:32px;line-height:1.4;color:#B4AFC8">Модель одна. Різне — що вона бачить і що може зробити сама.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">ЧАТ</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Репліка за реплікою</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Бачить те, що ви дали</p>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Навичка: уточнювати по ходу</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#EFEDFA">&gt; міркування правильне чи просто впевнене?</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">ПЕРЕДАТИ ЗАДАЧУ</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Віддаю задачу — отримую файл</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Бачить папку і підключені сервіси</p>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Навичка: бриф — результат, дані, нюанс</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#EFEDFA">&gt; що зробило б результат хибним?</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:40px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">CLAUDE CODE</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Будую те, що працюватиме знову</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Бачить проєкт, файли, термінал, git</p>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Навичка: прояснити ціль до запуску</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;line-height:1.45;color:#EFEDFA">&gt; що ти припустив?</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 4 · за курсом Anthropic «Claude 101»</p>
+<aside>Чат и «передать задачу» сейчас сливаются в одну беседу, у людей экран может отличаться. Вкладка Code остаётся. Строка «>» внизу каждой колонки — главный вопрос-проверка для этого режима. Code входит во все платные планы, лимит общий с чатом.</aside>
+</section>
+<section data-n="6" id="both" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Чат чи Code: що де<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<table style="width:1100px;font-family:'Geist', Arial, sans-serif;font-size:26px;color:#B4AFC8">
+<tr><th style="width:30%;color:#918CA9"></th><th style="width:33%;color:#918CA9">Чат</th><th style="width:37%;color:#A78BFA">Code</th></tr>
+<tr><td style="color:#EFEDFA">Тексти, аналіз, ідеї</td><td>так</td><td>так</td></tr>
+<tr><td style="color:#EFEDFA">Файли</td><td>завантажити в розмову</td><td>папка або репозиторій</td></tr>
+<tr><td style="color:#EFEDFA">Знання</td><td>Project</td><td>CLAUDE.md і файли</td></tr>
+<tr style="background:rgba(139, 92, 246, 0.12)"><td style="color:#EFEDFA">Skills</td><td>так</td><td>так, у .claude/skills</td></tr>
+<tr><td style="color:#EFEDFA">Розклад</td><td>так</td><td>так, хмарні задачі</td></tr>
+<tr><td style="color:#EFEDFA">Результат</td><td>відповідь, файл</td><td>зміни в репо, звіт, скрипт</td></tr>
+</table>
+<div style="display:flex;flex-direction:column;gap:24px;flex:1">
+<div style="border-left:4px solid #8B5CF6;padding:4px 28px">
+<p style="font-size:28px;font-weight:600;line-height:1.35;color:#EFEDFA">Майже все з чату можна в Code. Code — для того, що має жити довше за розмову.</p>
+</div>
+<div style="border-left:4px solid #3A3650;padding:4px 28px">
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">«Проєкти» в Code — інша річ: координують кілька паралельних сесій. Бета, на Team поки немає.</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · за документацією Claude Code, листопад 2026</p>
+<aside>Ответ на вопрос «можно ли всё из чата делать в Code?» — почти всё, но в Code результат живёт в репозитории: его видит следующая сессия, расписание и коллега. Project в чате — это знания и инструкции. Проекты в Claude Code — оркестрация параллельных облачных сессий, публичная бета для Pro/Max/Ultra, на Team ещё нет; у их общего аккаунта может не быть.</aside>
+</section>
+<section data-n="7" id="loop" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Як працює Code<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px">
+<div style="background:#13121C;border:1px solid #232130;padding:32px 40px;width:400px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">1</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Зібрав контекст</p>
+</div>
+<x-connector head="end" style="width:72px;height:4px;color:#8B5CF6;border-width:3px"></x-connector>
+<div style="background:#13121C;border:1px solid #232130;padding:32px 40px;width:400px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">2</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Зробив</p>
+</div>
+<x-connector head="end" style="width:72px;height:4px;color:#8B5CF6;border-width:3px"></x-connector>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:32px 40px;width:400px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">3</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Перевірив і знову</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#918CA9">&gt; у вас уже так</p>
+<div style="display:flex;flex-direction:row;align-items:center;gap:20px">
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:20px 28px">Чат claude.ai/code</p>
+<p style="font-size:32px;color:#8B5CF6">→</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:20px 28px">GitHub</p>
+<p style="font-size:32px;color:#8B5CF6">→</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:20px 28px">Сервер</p>
+<p style="font-size:32px;color:#8B5CF6">→</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA;background:rgba(139, 92, 246, 0.12);border:1px solid #8B5CF6;padding:20px 28px">≈60 автоматизацій за 4 місяці</p>
+</div>
+</div>
+<p style="font-size:40px;font-weight:600;line-height:1.3;color:#EFEDFA">ТЗ — у чаті. Виконання — в Code<span style="color:#8B5CF6">.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 5</p>
+<aside>Чат отвечает, а файлы вы переносите сами. Code работает в цикле и проверяет сам. Их облачная сессия живёт в контейнере, после сессии он удаляется: всё важное должно быть в репозитории. Локальный Code — вкладка в приложении, ваши файлы. История с урока 2: ТЗ начали в Code, он «навертел». Показ — после слайда «Режими Code»: weekly-metrics.csv в Code сразу в режиме Plan, потом «Що ти припустив?».</aside>
+</section>
+<section data-n="8" id="agentic" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Ви — керівник<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Agentic engineering: ви ставите ціль і перевіряєте, Claude з командою агентів виконує.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:stretch">
+<div style="background:#13121C;border:2px solid #22D3EE;padding:32px;width:400px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">ВИ</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Ціль, план, перевірка</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Що має вийти, як зрозуміти, що вийшло, що не можна чіпати</p>
+</div>
+<p style="font-size:48px;color:#8B5CF6;align-self:center">→</p>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:32px;width:400px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">CLAUDE CODE</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Головний агент</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Розбиває задачу, роздає частини, збирає результат</p>
+</div>
+<p style="font-size:48px;color:#8B5CF6;align-self:center">→</p>
+<div style="display:flex;flex-direction:column;gap:12px;flex:1">
+<div style="background:#13121C;border:1px solid #232130;padding:18px 24px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">EXPLORE</p><p style="font-size:24px;color:#EFEDFA">Шукає в репозиторії, лише читає</p></div>
+<div style="background:#13121C;border:1px solid #232130;padding:18px 24px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">PLAN</p><p style="font-size:24px;color:#EFEDFA">Готує план до змін</p></div>
+<div style="background:#13121C;border:1px solid #232130;padding:18px 24px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">ВАШІ</p><p style="font-size:24px;color:#EFEDFA">Рецензент, тестувальник — файл у .claude/agents</p></div>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#EFEDFA">Кожен субагент працює у своєму контексті й повертає коротке резюме. <span style="color:#A78BFA">Витрачає той самий ліміт.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · за документацією Claude Code: subagents</p>
+<aside>Мысль: в чате вы работаете с одним собеседником, в Code — с исполнителем, который сам раздаёт части задачи помощникам. Explore и Plan встроены, Claude зовёт их сам. Свои субагенты — файл в .claude/agents с описанием, когда их звать: например рецензент автоматизаций по пяти вопросам. Зачем: длинный поиск и логи не забивают основную беседу, каждый занят своим. Ваша роль меняется: не писать код, а поставить цель, утвердить план и проверить результат. Вопрос группе: «Яку частину вашої роботи ви б віддали окремому помічнику: пошук, перевірку чи тести?»</aside>
+</section>
+<section data-n="9" id="codemodes" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Режими Code<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Хто вирішує: ви чи Claude. Перемикач — під полем запиту.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+<div style="background:#13121C;border:2px solid #22D3EE;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">PLAN · ПЛАН</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Думає, нічого не змінює</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Читає, розпитує, пише план. Змін немає, доки ви не затвердите</p>
+<p style="font-size:24px;line-height:1.45;color:#EFEDFA">Коли: початок будь-якої нової задачі</p>
+</div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">ACCEPT EDITS · ПРАВКИ</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Файли сам, команди з дозволу</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Змінює файли без питань, на інші дії питає вас</p>
+<p style="font-size:24px;line-height:1.45;color:#EFEDFA">Коли: виконуєте план і хочете бачити кроки</p>
+</div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">AUTO · АВТО</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Робить усе, охоронець стежить</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Окрема модель зупиняє ризиковані дії. Питає рідко</p>
+<p style="font-size:24px;line-height:1.45;color:#EFEDFA">Коли: довга задача, напрям уже ясний</p>
+</div>
+</div>
+<p style="font-size:26px;line-height:1.45;color:#B4AFC8"><span style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#FBBF24">MANUAL · ВРУЧНУ</span>  лише в застосунку на комп'ютері: питає дозволу на кожну дію, крім читання. У веб-Code його роль виконує Accept edits.</p>
+<p style="font-size:28px;line-height:1.4;color:#EFEDFA">Один запит у режимі плану: <span style="font-family:'Geist Mono', 'Courier New', monospace;color:#A78BFA">/plan</span> на початку запиту.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · за документацією Claude Code: permission modes, листопад 2026</p>
+<aside>Важно: в их веб-Code (облачные сессии) в списке три режима: Accept edits, Plan, Auto. Manual есть только в приложении на компьютере и в терминале. В облаке правки файлов разрешены всегда, поэтому Accept edits там и есть «обычный» режим. Plan: читает, может запускать команды для изучения, но не правит, пока план не утверждён; при утверждении выбираете, в каком режиме продолжать. Auto: отдельная модель проверяет каждое действие и блокирует то, что выходит за рамки запроса; Claude реже останавливается на вопросы. Сказать: «Нова задача — завжди з Plan». Показ — следующий: задача с CSV сразу в режиме Plan.</aside>
+</section>
+<section data-n="10" id="skill" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Skill — це рецепт<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:32px;line-height:1.4;color:#B4AFC8">«Проєкти зберігають знання, skills виконують задачі» — Anthropic</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:28px 40px;display:flex;flex-direction:row;align-items:center;gap:40px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA;width:200px">ЗАВЖДИ</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Назва і опис</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;border-top:none;padding:28px 40px;display:flex;flex-direction:row;align-items:center;gap:40px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA;width:200px">КОЛИ ТРЕБА</p>
+<p style="font-size:32px;color:#B4AFC8">Текст інструкції — задача підійшла або ви написали /назва</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;border-top:none;padding:28px 40px;display:flex;flex-direction:row;align-items:center;gap:40px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA;width:200px">ЗА ПОТРЕБИ</p>
+<p style="font-size:32px;color:#B4AFC8">Шаблони, приклади, скрипти</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<div style="border-left:4px solid #8B5CF6;padding:8px 32px">
+<p style="font-size:32px;font-weight:600;line-height:1.35;color:#EFEDFA">Опис вирішує, чи спрацює skill. Пишіть словами, якими ви самі просите.</p>
+</div>
+<div style="border-left:4px solid #22D3EE;padding:8px 32px">
+<p style="font-size:32px;font-weight:600;line-height:1.35;color:#EFEDFA">Коли робити: ви вдруге пояснюєте той самий формат, тон і приклад.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 6</p>
+<aside>Skill — папка с файлом SKILL.md, плюс шаблоны и скрипты. Всегда в памяти только название и описание, полный текст — когда задача подошла. Поэтому тысяча строк правил не мешает, если они в skills. Чужие skills читать перед включением: у них около 130 из интернета.</aside>
+</section>
+<section data-n="11" id="path" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Шлях задачі<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;align-items:stretch;gap:16px">
+<div style="background:#13121C;border:1px solid #232130;padding:32px;flex:1;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">1 · ЧАТ</p>
+<p style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Вирішили задачу один раз</p>
+</div>
+<x-connector head="end" style="width:48px;height:4px;color:#8B5CF6;border-width:3px;align-self:center"></x-connector>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;flex:1;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">2 · SKILL</p>
+<p style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Записали, як це робити</p>
+</div>
+<x-connector head="end" style="width:48px;height:4px;color:#8B5CF6;border-width:3px;align-self:center"></x-connector>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;flex:1;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">3 · РЕПОЗИТОРІЙ</p>
+<p style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Працює в будь-якій сесії Code</p>
+</div>
+<x-connector head="end" style="width:48px;height:4px;color:#8B5CF6;border-width:3px;align-self:center"></x-connector>
+<div style="background:#13121C;border:2px solid #22D3EE;padding:32px;flex:1;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">4 · РОЗКЛАД</p>
+<p style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Claude запускає skill сам</p>
+</div>
+</div>
+<p style="font-size:60px;font-weight:600;line-height:1.2;color:#EFEDFA">Розклад = відкладений запуск skill<span style="color:#8B5CF6">.</span></p>
+<p style="font-size:28px;line-height:1.45;color:#B4AFC8">Project дає знання, skill — порядок дій, розклад — час запуску.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · приклад у репозиторії: skill tyzhnevyi-zvit</p>
+<aside>Ключевая мысль урока. Skill, придуманный в чате, можно сохранить как файл SKILL.md в репозитории — тогда его видят все сессии Code на этом репо и облачное расписание. Демо: в веб-Code на репо agt-claude-practice попросить «/tyzhnevyi-zvit», потом «Запускай це щопонеділка о 9:07» — Claude создаст расписание. Показать на своём аккаунте или сразу поставить на паузу.</aside>
+</section>
+<section data-n="12" id="whatfor" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Що для чого<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:start">
+<table style="width:1080px;font-family:'Geist', Arial, sans-serif;font-size:28px;color:#B4AFC8">
+<tr><th style="width:34%;color:#918CA9">Потрібно</th><th style="width:30%;color:#918CA9">Де</th><th style="width:36%;color:#918CA9">Коли завантажується</th></tr>
+<tr><td>Знання по темі</td><td style="color:#EFEDFA">Project</td><td>у чатах проєкту</td></tr>
+<tr><td>Правила завжди</td><td style="color:#EFEDFA">CLAUDE.md</td><td>завжди, повністю</td></tr>
+<tr style="background:rgba(139, 92, 246, 0.12)"><td>Як робити</td><td style="color:#EFEDFA">Skill</td><td>коли потрібно</td></tr>
+<tr><td>Однаковий результат</td><td style="color:#EFEDFA">Скрипт у skill</td><td>запускається</td></tr>
+<tr><td>Доступ до сервісу</td><td style="color:#EFEDFA">Конектор, MCP</td><td>коли підключений</td></tr>
+<tr><td>Коли запускати</td><td style="color:#EFEDFA">Розклад, cron</td><td>за часом</td></tr>
+</table>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px;width:536px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">&gt; у вашому репозиторії</p>
+<p style="font-size:28px;line-height:1.45;color:#B4AFC8">CLAUDE.md — <span style="color:#EFEDFA">25 КБ</span>, і просить читати ще <span style="color:#EFEDFA">1,9 МБ</span> щосесії</p>
+<p style="font-size:28px;line-height:1.45;color:#B4AFC8">Скільки з цього Claude справді утримає?</p>
+<p style="font-size:28px;line-height:1.45;color:#EFEDFA">Розділи правил → окремі skills</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 7</p>
+<aside>Главная формула занятия: как делать — skill; что знать — Project и CLAUDE.md; к чему доступ — коннекторы; когда запускать — расписание или cron. У них уже есть хороший skill agtplus-bbooster на 44 строки — можно показать как пример.</aside>
+</section>
+<section data-n="13" id="claudemd" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">CLAUDE.md: скільки і де<span style="color:#8B5CF6">?</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Окремий CLAUDE.md на кожну автоматизацію — не обов'язково.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">КОРІНЬ РЕПОЗИТОРІЮ</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Один на всіх</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Читається в кожній сесії. Лише загальні правила. До 200 рядків</p>
+</div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">ПАПКА АВТОМАТИЗАЦІЇ</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">За потреби</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Читається, лише коли Claude працює в цій папці. Особливості: чий логін, що не чіпати</p>
+</div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:32px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">SKILLS</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Як робити</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Процедури: нова автоматизація, перевірка, новий ключ. Читаються, коли задача підходить</p>
+</div>
+</div>
+<div style="background:#13121C;border-left:4px solid #22D3EE;padding:28px 40px">
+<p style="font-size:30px;line-height:1.4;color:#EFEDFA">Обов'язково для кожної автоматизації — <span style="color:#22D3EE">запис у реєстрі</span>: що робить, коли, під чиїм логіном, хто власник, як перевірити.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · за документацією Claude Code: memory</p>
+<aside>Ответ на частый вопрос. CLAUDE.md в корне читается в каждой сессии целиком — Anthropic советует держать до 200 строк, иначе Claude хуже следует правилам. CLAUDE.md во вложенной папке подгружается только когда Claude читает или правит файлы в этой папке — туда кладут особенности конкретной автоматизации, и то если они есть. Процедуры — в skills. Реестр (у них AUTOMATIONS.md) — обязательно, это ответ на «где код и кто владелец». Их рабочий CLAUDE.md около 25 КБ — это примерно в 3–4 раза длиннее рекомендации; без подробностей содержимого.</aside>
+</section>
+<section data-n="14" id="example" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Приклад: чек → рядок<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<div style="background:#0D0C14;border:1px solid #3A3650;padding:40px;width:1060px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;line-height:1.55;color:#B4AFC8"><span style="color:#918CA9">---</span><br><span style="color:#A78BFA">name:</span> chek-v-riadok<br><span style="color:#A78BFA">description:</span> Перетворює чек, рахунок<br>або акт ремонту авто на один рядок<br>журналу робіт. Використовуй, коли<br>надсилають документ про ТО чи ремонт.<br><span style="color:#918CA9">---</span><br><span style="color:#EFEDFA">Витягни: дата | номер | пробіг |<br>роботи | запчастини | сума.<br>Поверни один рядок через |.<br>Поля не видно — постав «?». Не вгадуй.</span><br><span style="color:#918CA9">Приклад: 12.10.2026 | АА1234ВВ | 184200 | ...</span></p>
+</div>
+<div style="display:flex;flex-direction:column;gap:24px;flex:1">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">3 ІНГРЕДІЄНТИ</p>
+<div style="border-left:4px solid #8B5CF6;padding:4px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600;color:#EFEDFA">Формат</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Які поля і в якому вигляді</p>
+</div>
+<div style="border-left:4px solid #8B5CF6;padding:4px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600;color:#EFEDFA">Тон</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Для кого і як має звучати</p>
+</div>
+<div style="border-left:4px solid #8B5CF6;padding:4px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:32px;font-weight:600;color:#EFEDFA">Приклад</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Один результат, який вам подобається</p>
+</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 8 · формат, тон, приклад — за туторіалом Anthropic</p>
+<aside>Это задача Вишняка из ДЗ 1. Показать живьём в веб-Code на репо agt-claude-practice: попросить сделать этот skill разговором (запрос на странице «Запросы урока 3»), потом в новой сессии дать data/chek-1.txt без названия skill, затем трудный data/chek-2-vazhkyi.txt. Готовая копия skill уже лежит в репо. Описание — первое, что читает Claude, поэтому там слова, которыми человек реально просит.</aside>
+</section>
+<section data-n="15" id="artifacts" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Артефакти<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Жива сторінка, яку Claude публікує з розмови: дашборд, список задач, порівняння.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div style="background:#13121C;border:2px solid #22D3EE;padding:28px 32px;display:flex;flex-direction:column;gap:10px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#22D3EE">ДЕ</p><h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Посилання на claude.ai</h3><p style="font-size:24px;line-height:1.45;color:#B4AFC8">Відкривається з комп'ютера і з телефона</p></div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:28px 32px;display:flex;flex-direction:column;gap:10px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">ХТО БАЧИТЬ</p><h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Лише ваш акаунт</h3><p style="font-size:24px;line-height:1.45;color:#B4AFC8">Поки не поділитесь посиланням. На спільному акаунті — усі, хто в ньому</p></div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:28px 32px;display:flex;flex-direction:column;gap:10px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">ЯК ОНОВЛЮЄТЬСЯ</p><h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Нова версія за тим самим посиланням</h3><p style="font-size:24px;line-height:1.45;color:#B4AFC8">Ви просите Claude — або розклад Claude робить це щоранку</p></div>
+<div style="background:#13121C;border:1px solid #3A3650;padding:28px 32px;display:flex;flex-direction:column;gap:10px"><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">ДАНІ</p><h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Свої записи і живі дані</h3><p style="font-size:24px;line-height:1.45;color:#B4AFC8">Галочки й нові задачі зберігаються. Дані з Drive, Gmail — через конектори</p></div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#EFEDFA">Не сервер: щоб подивитися й відмітити — артефакт. <span style="color:#A78BFA">Щоб працювало саме вночі — cron або розклад.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · за документацією Claude Code: artifacts, листопад 2026</p>
+<aside>Артефакт — одна страница без своего сервера: Claude публикует её из сессии в чате или в Code, ссылка на claude.ai. На Max — приватно для аккаунта, пока не поделитесь; у них аккаунт общий, значит видят все, кто в нём. Обновляется в том же месте, когда Claude публикует новую версию — по просьбе или из задачи по расписанию. Живые данные — через коннекторы, каждый зритель через свой аккаунт. Свои записи на странице (галочки, новые задачи) сохраняются, если попросить Claude об этом при создании. Через пару минут строим такой список вживую, дома каждый делает свой. Вопрос: «Що з ваших таблиць ви б хотіли бачити так — з телефона, одним екраном?»</aside>
+</section>
+<section data-n="16" id="todomap" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Мої задачі: хто що робить<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Одна задача — усе, що ми сьогодні розібрали.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:grid;grid-template-columns:620px 1fr;gap:24px;align-items:center;background:#13121C;border:1px solid #232130;padding:20px 28px"><p style="font-size:28px;line-height:1.35;color:#EFEDFA">Сторінка з задачами на телефоні й комп'ютері</p><p style="font-size:26px;line-height:1.35;color:#B4AFC8"><span style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#22D3EE">АРТЕФАКТ</span>  Claude будує і публікує</p></div>
+<div style="display:grid;grid-template-columns:620px 1fr;gap:24px;align-items:center;background:#13121C;border:1px solid #232130;padding:20px 28px"><p style="font-size:28px;line-height:1.35;color:#EFEDFA">«Додай Олені задачу на п'ятницю, терміново»</p><p style="font-size:26px;line-height:1.35;color:#B4AFC8"><span style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">SKILL</span>  dodaty-zadachu: кому, що, дедлайн, пріоритет</p></div>
+<div style="display:grid;grid-template-columns:620px 1fr;gap:24px;align-items:center;background:#13121C;border:1px solid #232130;padding:20px 28px"><p style="font-size:28px;line-height:1.35;color:#EFEDFA">Задачі з Бустера кожні 15 хвилин</p><p style="font-size:26px;line-height:1.35;color:#B4AFC8"><span style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#22D3EE">CRON</span>  Сервер, чітке правило, без Claude</p></div>
+<div style="display:grid;grid-template-columns:620px 1fr;gap:24px;align-items:center;background:#13121C;border:1px solid #232130;padding:20px 28px"><p style="font-size:28px;line-height:1.35;color:#EFEDFA">Голосове в Telegram → задача</p><p style="font-size:26px;line-height:1.35;color:#B4AFC8"><span style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#22D3EE">БОТ НА СЕРВЕРІ</span>  Голос → текст → та сама логіка, що в skill</p></div>
+<div style="display:grid;grid-template-columns:620px 1fr;gap:24px;align-items:center;background:#13121C;border:1px solid #232130;padding:20px 28px"><p style="font-size:28px;line-height:1.35;color:#EFEDFA">О 8:07: що кожному робити першим</p><p style="font-size:26px;line-height:1.35;color:#B4AFC8"><span style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">РОЗКЛАД CLAUDE</span>  Прочитати все, розставити, написати три головні</p></div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#EFEDFA">Порядок той самий: <span style="color:#A78BFA">план → один раз руками → перевірка → на годинник.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · дані в репозиторії: data/moi-zadachi.json, data/bbooster-zadachi.json, data/komanda.json</p>
+<aside>Сначала спросить группу, не показывая правую колонку: «Що з цього cron, що Claude, що skill?» Потом показать. Ответы: страница — артефакт; добавить фразой — skill; Бустер каждые 15 минут — cron, это правило; голос в Telegram — бот работает на сервере постоянно, распознавание голоса — отдельный сервис, Claude выберет его с вами в режиме плана; план дня — расписание Claude, потому что надо прочитать и решить. Дальше — живой показ: строим такой список в их веб-Code из файлов data/. Дома каждый делает свой — шаг 5 домашки; голос, Бустер и план дня — на следующих занятиях.</aside>
+</section>
+<section data-n="17" id="needs" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Які skills вам потрібні<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Те, що ви пояснювали Claude знову і знову — за вашим журналом сесій.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">check-automation</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">«Чому не прийшло?»</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Лог, останній успішний запуск, вхід, блокування</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">add-secret</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Новий ключ або скринька</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Перевірити, чи вже підключено, унікальна назва</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">new-automation</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Нова автоматизація</h3>
+<p style="font-family:'Geist', Arial, sans-serif;font-size:24px;line-height:1.4;color:#B4AFC8">Одразу з перевіркою результату і сигналом при збої</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">bb-question</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">«Скільки задач у …»</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Питання по Бустеру через API. Частково вже є</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">monthly-report</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Місячний звіт департаменту</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Один шаблон замість п’яти заходів</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px;display:flex;flex-direction:column;gap:10px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">nethunt-leads</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.3;color:#EFEDFA">Питання по лідах</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Лише читання, без ризику для CRM</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#EFEDFA">Ознака: <span style="color:#A78BFA">ви вдруге пояснюєте той самий формат, тон і приклад.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · за вашими MEMORY.md і CLAUDE.md, зріз на 29.10–03.11</p>
+<aside>Откуда: в их MEMORY.md 12+ инцидентов «почему не пришло», helper-бот для ключей упоминается 48 раз, 28 заголовков про лиды, 23 про отчёты (презентация 2 департамента — 5 заходов). Сейчас эти процедуры живут в CLAUDE.md (25 КБ, всегда в памяти) или в MEMORY, который целиком не читается. Спросить группу: что вы объясняли Claude больше двух раз? Частоту запросов «скільки задач» по чатам мы не проверяли — истории чатов у нас нет.</aside>
+</section>
+<section data-n="18" id="practice" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:end">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Збираємо skill разом<span style="color:#8B5CF6">.</span></h2>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#22D3EE">12 хв</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:28px;width:640px">
+<p style="font-size:32px;line-height:1.35;color:#EFEDFA"><span style="color:#8B5CF6">1</span>  Ви називаєте задачу, яку пояснювали двічі</p>
+<p style="font-size:32px;line-height:1.35;color:#EFEDFA"><span style="color:#8B5CF6">2</span>  Я пишу запит, Claude ставить питання</p>
+<p style="font-size:32px;line-height:1.35;color:#EFEDFA"><span style="color:#8B5CF6">3</span>  Ви відповідаєте — як замовник</p>
+<p style="font-size:32px;line-height:1.35;color:#EFEDFA"><span style="color:#8B5CF6">4</span>  Нова сесія — перевіряємо, чи спрацює</p>
+<p style="font-size:24px;line-height:1.45;color:#918CA9">Самі зробите таке вдома — у ДЗ, крок 3</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:40px;flex:1">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;line-height:1.55;color:#EFEDFA">Створи skill у .claude/skills для задачі: [назва].<br>Формат: [розділи, обмеження].<br>Для кого і яким тоном: [хто читає].<br>Приклад, який нам подобається: [встав].<br><span style="color:#A78BFA">Спершу запитай, коли ми це використовуємо і що таке хороший результат.</span><br><span style="color:#A78BFA">Опис skill напиши нашими словами. Шаблон: templates/SKILL-template.md</span></p>
+</div>
+</div>
+<p style="font-size:24px;line-height:1.45;color:#918CA9">Показую на навчальному репозиторії agt-claude-practice.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3</p>
+<aside>Практики у них нет — собираем один skill вместе: группа выбирает задачу (голосование на прошлом слайде), вы пишете запрос, на вопросы Claude отвечает группа вслух. Если тишина — берите задачу «відповідь на рекламацію» (data/M02) или «місячний звіт департаменту». После создания — новая сессия, просьба обычными словами, без названия skill. Claude сам сделает ветку.</aside>
+</section>
+<section data-n="19" id="check" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Перевірка<span style="color:#8B5CF6">.</span></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:48px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;color:#8B5CF6">1</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2;color:#EFEDFA">Завантажився?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Попросіть звичайними словами, не називаючи skill. У міркуваннях Claude видно, що він його читає</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:48px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;color:#8B5CF6">2</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2;color:#EFEDFA">Схоже на приклад?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Що довелося виправити руками — те і допишіть у skill</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:48px;display:flex;flex-direction:column;gap:24px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;color:#8B5CF6">3</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2;color:#EFEDFA">Де він помилиться?</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Дайте важкий випадок: розмите фото, порожнє поле. Поставив «?» чи вигадав?</p>
+</div>
+</div>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#A78BFA">&gt; онови skill: [що виправити]</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 10</p>
+<aside>Не загрузился — поправить описание: в нём слова, которыми человек реально просит. Итог: skill группы сработал без названия, и одна правка по итогам проверки. Следом — показ расписания (запрос в разделе 3).</aside>
+</section>
+<section data-n="20" id="autotypes" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Що таке автоматизація<span style="color:#8B5CF6">.</span></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">ПРАВИЛО</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Ліди без реакції → задача</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Без AI. Дешево, передбачувано, однаково щоразу</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">ПРАВИЛО + КРОК AI</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Лист → AI визначає тип → задача</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">AI лише там, де треба зрозуміти текст</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:36px;display:flex;flex-direction:column;gap:14px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">АГЕНТ</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">«Підготуй звіт і перевір»</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Claude сам обирає кроки. Гнучко, але треба перевіряти</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;gap:16px;align-items:center">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#918CA9">ЗАПУСК</p>
+<p style="font-size:28px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:18px 24px">За часом: щоранку о 9:00</p>
+<p style="font-size:28px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:18px 24px">За подією: прийшов лист</p>
+<p style="font-size:28px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:18px 24px">Вручну: /skill, кнопка</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#918CA9">ДЕ</p>
+<p style="font-size:28px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:18px 24px">Сервер: cron</p>
+<p style="font-size:28px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:18px 24px">Claude: skills, розклад</p>
+<p style="font-size:28px;color:#918CA9;border:1px dashed #3A3650;padding:18px 24px">n8n, Make, Zapier — наступне заняття</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · приклади з ваших автоматизацій</p>
+<aside>Без сухой теории: три вида по логике и их примеры из их же системы — правило (просроченные лиды → задача), правило плюс шаг AI (почта k1 → классификация → задача), агент (сессия Code). Дальше спросить: какая у вас автоматизация к какому виду относится? Чем дешевле и предсказуемее, тем лучше — AI только там, где нужно понимать текст.</aside>
+</section>
+<section data-n="21" id="fail" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Завершився ≠ зробив<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<div style="background:#13121C;border:1px solid #232130;padding:28px 32px;flex:1">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#918CA9">1</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Cron запустив</p>
+</div>
+<x-connector head="end" style="width:48px;height:4px;color:#3A3650;border-width:3px"></x-connector>
+<div style="background:#13121C;border:1px solid #34D399;padding:28px 32px;flex:1">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#34D399">2 · у лозі все добре</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Скрипт завершився</p>
+</div>
+<x-connector head="end" style="width:48px;height:4px;color:#3A3650;border-width:3px"></x-connector>
+<div style="background:#13121C;border:2px solid #F87171;padding:28px 32px;flex:1">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#F87171">3 · ніхто не перевірив</p>
+<p style="font-size:32px;font-weight:600;color:#EFEDFA">Результат є?</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<div style="border-left:4px solid #3A3650;padding:4px 28px">
+<p style="font-size:28px;line-height:1.45;color:#B4AFC8">Контроль задач тижнями не міг увійти в Бізнес Бустер, а підсумок у лозі був «помилок 0»</p>
+</div>
+<div style="border-left:4px solid #3A3650;padding:4px 28px">
+<p style="font-size:28px;line-height:1.45;color:#B4AFC8">Cron щодня запускає файл, якого вже немає. Помилка є тільки в лозі, який ніхто не читає</p>
+</div>
+</div>
+<p style="font-size:40px;font-weight:600;line-height:1.3;color:#EFEDFA">Перевіряйте результат, а не факт запуску<span style="color:#8B5CF6">.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · зріз сервера на 03.11.2026</p>
+<aside>Без имён. Подробности — в справке по автоматизациям. Контроль задач: с 14.10 каждый запуск оставался на странице входа, итог «нагадано 0, помилок 0»; причина в логе не названа, неверный пароль подтвердили 02.11. Не утверждать больше, чем доказано. Вывод: в каждой автоматизации нужна проверка результата — «создано N задач, N > 0» — и сообщение, если N = 0.</aside>
+</section>
+<section data-n="22" id="cases" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Ще три випадки<span style="color:#8B5CF6">.</span></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#F87171">ЧУЖИЙ ОБЛІКОВИЙ ЗАПИС</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Задачі пішли колезі</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Нова сесія записала інший логін у спільний .env під тим самим ім’ям. Скрипт почав входити під іншою людиною</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#FBBF24">ТИША</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Задачі просто перестали йти</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Один запуск завис і не зняв блокування. Щохвилини: «попередній ще триває» — і вихід. Помітила людина, не система</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:20px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#34D399">ДОБРЕ, АЛЕ ДОРОГО</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Пошта → задачі кожні 2 хв</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Фільтр до AI, кеш, безпечний збій — зроблено правильно. Але це 34% усіх витрат на API</p>
+</div>
+</div>
+<p style="font-size:32px;line-height:1.4;color:#EFEDFA">Cron уміє тільки запускати. Він не знає, чи був результат<span style="color:#8B5CF6">.</span></p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 12 · зріз на 03.11.2026</p>
+<aside>Сначала сказать: около 60 автоматизаций за 4 месяца людьми без программирования — это много, и многие решения правильные: переход на API, уникальные префиксы, учёт расходов. Даты: чужой логин — 28.07; зависшая блокировка — 27–28.07; почта: $59,71 из $174,33, 21 715 вызовов, июль — 7 октября. Вопрос к последнему: что можно отсеять без AI? Не называть людей и не показывать технику доступа к серверу.</aside>
+</section>
+<section data-n="23" id="five" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">5 питань до запуску<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:column;gap:0px">
+<div style="border-top:1px solid #232130;padding:20px 0px;display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#8B5CF6;width:64px">01</p>
+<p style="font-size:32px;color:#EFEDFA">Як я зрозумію, що спрацювало? <span style="color:#918CA9">Не «скрипт завершився», а «створено N задач, N &gt; 0»</span></p>
+</div>
+<div style="border-top:1px solid #232130;padding:20px 0px;display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#8B5CF6;width:64px">02</p>
+<p style="font-size:32px;color:#EFEDFA">Хто дізнається, якщо зламалось, і як?</p>
+</div>
+<div style="border-top:1px solid #232130;padding:20px 0px;display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#8B5CF6;width:64px">03</p>
+<p style="font-size:32px;color:#EFEDFA">Під чиїм обліковим записом? <span style="color:#918CA9">Що буде, коли людина змінить пароль або піде?</span></p>
+</div>
+<div style="border-top:1px solid #232130;padding:20px 0px;display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#8B5CF6;width:64px">04</p>
+<p style="font-size:32px;color:#EFEDFA">Що буде, якщо запустити двічі?</p>
+</div>
+<div style="border-top:1px solid #232130;border-bottom:1px solid #232130;padding:20px 0px;display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#8B5CF6;width:64px">05</p>
+<p style="font-size:32px;color:#EFEDFA">Де код і хто власник?</p>
+</div>
+</div>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:28px;line-height:1.5;color:#A78BFA;background:#13121C;border:1px solid #8B5CF6;padding:24px 32px">&gt; Зламай це навмисно: неправильний пароль, порожні дані. Покажи, що станеться і хто про це дізнається</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 13</p>
+<aside>Что сделаем мы при переходе на корпоративный Claude: отдельная папка, ключи и логи на каждую автоматизацию; skills new-automation, check-automation, add-secret; предупреждение, если автоматизация молчит дольше нормы; весь код в git; отдельный пользователь вместо root; бэкапы; владелец у каждой. Говорить «так будет», а не «так есть». Что должен помнить автор — эти пять вопросов.</aside>
+</section>
+<section data-n="24" id="autopath" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:44px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Від задачі до автоматизації<span style="color:#8B5CF6">.</span></h2>
+<div style="display:flex;flex-direction:row;gap:16px;align-items:stretch">
+<div style="flex:1;background:#13121C;border:2px solid #22D3EE;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#22D3EE">1 · PLAN</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">План</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Claude розпитує і пропонує кроки. Ви виправляєте план, а не код</p>
+</div>
+<p style="font-size:40px;color:#8B5CF6;align-self:center">→</p>
+<div style="flex:1;background:#13121C;border:1px solid #3A3650;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">2 · ACCEPT EDITS</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Зробити один раз</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Задача руками, результат перед очима</p>
+</div>
+<p style="font-size:40px;color:#8B5CF6;align-self:center">→</p>
+<div style="flex:1;background:#13121C;border:1px solid #3A3650;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">3 · ПЕРЕВІРКА</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Перевірити</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">«Що ти припустив?» «Зламай навмисно». Одну цифру — руками</p>
+</div>
+<p style="font-size:40px;color:#8B5CF6;align-self:center">→</p>
+<div style="flex:1;background:#13121C;border:2px solid #8B5CF6;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">4 · НА ГОДИННИК</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.25;color:#EFEDFA">Автоматизувати</h3>
+<p style="font-size:24px;line-height:1.4;color:#B4AFC8">Правило → cron. Прочитати й написати → розклад Claude</p>
+</div>
+</div>
+<div style="background:#13121C;border-left:4px solid #8B5CF6;padding:28px 40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:32px;line-height:1.4;color:#EFEDFA">Не автоматизуйте те, що ще жодного разу не спрацювало руками.</p>
+<p style="font-size:26px;line-height:1.4;color:#B4AFC8">Крок 4 — знову з режиму плану: «Як це запускати щодня і як я дізнаюсь, що зламалось?»</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · так само робимо домашнє завдання</p>
+<aside>Главный порядок работы с любой автоматизацией. 1 — Plan: Claude задаёт вопросы и предлагает шаги, вы правите план словами — это дешевле, чем переделывать код. 2 — утвердить план, режим Accept edits (или Auto для длинной задачи), сделать задачу один раз и посмотреть результат. 3 — проверка: что ты допустил, сломай намеренно, одну цифру руками. 4 — только после этого решать, как запускать: cron или расписание Claude (следующий слайд), и снова начать с плана. Вопрос группе: «Хто з вас уже автоматизував щось, що жодного разу не перевірив руками?» В ДЗ шаг 2 начинается именно с режима Plan.</aside>
+</section>
+<section data-n="25" id="cron" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Cron чи розклад Claude<span style="color:#8B5CF6">.</span></h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">CRON НА СЕРВЕРІ</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Будильник запускає той самий код</h3>
+<p style="font-size:24px;line-height:1.5;color:#B4AFC8">від 1 хвилини · пам’ять у файлах і базі<br>доступ до закритих систем · майже безкоштовно<br>потрібен сервер і нагляд за збоями</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">РОЗКЛАД CLAUDE</p>
+<h3 style="font-size:32px;font-weight:600;line-height:1.25;color:#EFEDFA">Claude щоразу виконує інструкцію заново</h3>
+<p style="font-size:24px;line-height:1.5;color:#B4AFC8">у хмарі — від 1 години · без пам’яті між запусками<br>тільки дозволені сервіси · витрачає ліміт плану<br>без сервера · прив’язаний до акаунта</p>
+</div>
+</div>
+<div style="background:#13121C;border-left:4px solid #8B5CF6;padding:32px 40px;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:32px;line-height:1.4;color:#EFEDFA">Кожен крок — чітке правило? <span style="color:#A78BFA">Claude один раз пише код, cron його запускає.</span></p>
+<p style="font-size:32px;line-height:1.4;color:#EFEDFA">Треба прочитати, порівняти, написати? <span style="color:#A78BFA">Розклад Claude.</span></p>
+<p style="font-size:32px;line-height:1.4;color:#EFEDFA">Найкраще разом: <span style="color:#22D3EE">скрипт рахує, Claude пояснює.</span></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 14 · Desktop-задачі Claude працюють на вашому комп’ютері, поки він увімкнений</p>
+<aside>Важно сказать: почти все их 50+ расписаний правильно сделаны на cron, и многие «отчёты» (daily_report, rada_tracker, absence_report) считаются вообще без Claude — это хорошо. Лучшие кандидаты в расписание Claude: месячный мониторинг законодательства для календаря бухгалтера; ежедневная проверка «все ли автоматизации живы» по таблице; человеческая сводка к rada_tracker для Баранкова; комментарий к показателям CRM 1-го числа. У них уже есть routine Claude — ежедневный чат-отчёт по застрявшим задачам: живой пример. Правило Anthropic: сначала один раз вручную, проверить результат, потом в расписание. Показ, если есть время: /schedule на вашем аккаунте, сначала запуск вручную, потом пауза. Расписание видят все на общем аккаунте и тратит общий лимит — им показываем на вашем. У облачных задач по умолчанию все подключённые коннекторы, лишние убрать. Вопрос: когда вы последний раз проверяли, что автоматизация работает правильно?</aside>
+</section>
+<section data-n="26" id="where" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:end">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Куди<span style="color:#8B5CF6">?</span></h2>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:32px;color:#22D3EE">3 хв</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Лист → задача кожні 2 хвилини</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Замовлення Епіцентру кожні 30 хвилин</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Прострочені ліди → задача</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Відсоток зростаючих статистик</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Ранковий PR-пакет</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Нові закони раз на місяць → задачі бухгалтеру</p>
+<p style="font-size:32px;color:#EFEDFA;background:#13121C;border:1px solid #232130;padding:28px 36px">Чек → рядок таблиці</p>
+<p style="font-size:32px;color:#918CA9;border:1px dashed #3A3650;padding:28px 36px">Ваша задача?</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · 15 · cron · розклад Claude · skill · без AI</p>
+<aside>Ответы: лист → задача — cron плюс короткий вызов AI; Эпицентр — cron; просроченные лиды — cron, AI не нужен; статистики — без AI, формула или скрипт; PR-пакет — расписание Claude; законы раз в месяц — найти изменения: расписание Claude, создать задачи: cron (одна задача, две части); чек → строка — skill, запуск вручную.</aside>
+</section>
+<section data-n="27" id="research" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:row;justify-content:space-between;align-items:end">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Дослідження<span style="color:#8B5CF6">.</span></h2>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:28px;color:#918CA9">якщо є час</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:16px">
+<div style="background:#13121C;border:1px solid #232130;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:40px;font-weight:900;color:#8B5CF6">1</p>
+<h3 style="font-size:28px;font-weight:600;color:#EFEDFA">Інструмент</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Факт — пошук. Багато джерел — Research</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:40px;font-weight:900;color:#8B5CF6">2</p>
+<h3 style="font-size:28px;font-weight:600;color:#EFEDFA">Бриф</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Яке рішення, критерії, розділи звіту</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:40px;font-weight:900;color:#8B5CF6">3</p>
+<h3 style="font-size:28px;font-weight:600;color:#EFEDFA">Контекст</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Ваш бізнес і ваші документи + інтернет</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:40px;font-weight:900;color:#8B5CF6">4</p>
+<h3 style="font-size:28px;font-weight:600;color:#EFEDFA">Перевірка</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">2 твердження і першоджерело однієї цифри</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:28px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:40px;font-weight:900;color:#22D3EE">5</p>
+<h3 style="font-size:28px;font-weight:600;color:#EFEDFA">Повтор</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Вдалий бриф → skill → розклад</p>
+</div>
+</div>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:26px;line-height:1.5;color:#A78BFA;background:#13121C;border:1px solid #3A3650;padding:24px 32px">&gt; Мені треба вирішити [що] до [дати]. Контекст: [бізнес]. Порівняй [варіанти] за [критеріями]. Для кожної цифри — джерело. Познач, у чому не впевнений.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · шаблон: templates/brief-doslidzhennia.md · практика: три КП у data/</p>
+<aside>По материалам Anthropic: пошук — для 1–2 фактов, Research — для 5+ шагов поиска и отчёта со ссылками; бриф с целью, разделами и ограничениями; контекст бизнеса резко повышает качество; проверить 2 утверждения по официальным источникам и найти первоисточник одной цифры. Показ, если есть время: в репо три выдуманных КП на перевозки — сравнительная таблица со скрытыми платежами, 3 цифры проверить в оригинале.</aside>
+</section>
+<section data-n="28" id="homework" data-transition="fade" style="background:#0D0C14;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Домашня робота<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Дві автоматизації, бот, що щоранку пише звіт, і свій список задач на телефоні.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+<div style="background:#13121C;border:1px solid #232130;padding:24px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">1 · 15 ХВ</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.2;color:#EFEDFA">Telegram-бот</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">@BotFather: ім'я, адреса, токен. Натиснути Start</p>
+</div>
+<div style="background:#13121C;border:2px solid #22D3EE;padding:24px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">2 · CRON</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.2;color:#EFEDFA">Звіт о 9:05</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Спершу план, потім Claude на сервері пише скрипт і ставить розклад</p>
+</div>
+<div style="background:#13121C;border:2px solid #8B5CF6;padding:24px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">3 · ЗАДАЧА CLAUDE</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.2;color:#EFEDFA">Skill за розкладом</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Claude читає, пише висновок і питання</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:24px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">4 · 15 ХВ</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.2;color:#EFEDFA">Опис</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Claude Code питає, ви відповідаєте</p>
+</div>
+<div style="background:#13121C;border:2px solid #22D3EE;padding:24px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">5 · АРТЕФАКТ</p>
+<h3 style="font-size:28px;font-weight:600;line-height:1.2;color:#EFEDFA">Мій список задач</h3>
+<p style="font-size:24px;line-height:1.45;color:#B4AFC8">Як на занятті, але свій. Відкрити з телефона</p>
+</div>
+</div>
+<div style="background:#13121C;border-left:4px solid #8B5CF6;padding:28px 40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#A78BFA">У MOODLE</p>
+<p style="font-size:30px;line-height:1.4;color:#EFEDFA">Скриншот звіту, що прийшов сам · @ім'я бота · скриншот задачі Claude · файл опису · скриншот списку задач</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#22D3EE">НАСТУПНЕ ЗАНЯТТЯ</p>
+<p style="font-size:30px;color:#EFEDFA">n8n, Make, Zapier: ваші звіти — в робочі процеси</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · усі інструкції й шаблони: homework/ у репозиторії agt-claude-practice</p>
+<aside>Показать папку homework/ в их веб-Code: README с таблицей шагов. Шаг 2 — cron на рабочем сервере, как все их автоматизации: в claude.ai/code на рабочем репозитории включают режим Plan, описывают задачу, утверждают план, токен можно вставить прямо в запрос. Данные — настоящие: NetHunt, Бустер, Ringostat, таблицы. Шаг 3 — запланированная задача Claude на общем аккаунте, название «ДЗ3 · Фамилия · …». Шаг 5 — свой список задач как у нас на уроке; голос, Бустер и план дня добавим на следующих занятиях. Готовые запросы — в homework/. Срок сдачи назвать вслух. ДЗ 2 почти никто не сдал — сказать, что это задание закрывает и его. После занятия: в 17:00 перенос Moodle — дать слово, что занятие закончилось.</aside>
+</section>
+<section data-n="29" id="deeper" data-transition="fade" style="background:#08080B;color:#EFEDFA;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h2 style="font-family:'Unbounded', 'Arial Black', sans-serif;font-size:60px;font-weight:900;line-height:1.1;text-transform:uppercase;color:#EFEDFA">Глибше<span style="color:#8B5CF6">.</span></h2>
+<p style="font-size:28px;line-height:1.4;color:#B4AFC8">Чотири питання з вашої роботи. Оберіть, з якого почнемо.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div style="background:#13121C;border:1px solid #232130;padding:32px 36px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#EFEDFA">«Чому не прийшло?»</h3>
+<p style="font-size:26px;line-height:1.4;color:#B4AFC8">Одна автоматизація щоранку перевіряє всі інші й пише, навіть коли все добре</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">→ SKILL «СТОРОЖ»</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px 36px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#EFEDFA">«Цифри є, а висновків нема»</h3>
+<p style="font-size:26px;line-height:1.4;color:#B4AFC8">Скрипт рахує точно, Claude пише, що це означає і що робити</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">→ SKILL ЗІ СКРИПТОМ</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px 36px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#EFEDFA">«Claude забуває мої правила»</h3>
+<p style="font-size:26px;line-height:1.4;color:#B4AFC8">Довга інструкція заважає. Розкладаємо: правила, процедури, довідка</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">→ КОРОТКИЙ CLAUDE.MD</p>
+</div>
+<div style="background:#13121C;border:1px solid #232130;padding:32px 36px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#EFEDFA">«Як перевірити Claude?»</h3>
+<p style="font-size:26px;line-height:1.4;color:#B4AFC8">Другий агент бачить лише результат і джерела та шукає помилки</p>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:22px;color:#A78BFA">→ СПИСОК, ЩО ПЕРЕВІРИТИ РУКАМИ</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#918CA9">AXAL · Заняття 3 · запасний слайд · запити — на сторінці «Запросы урока 3», розділ 9</p>
+<aside>Показывать, только если группа говорит «это мы уже знаем» или идём быстрее графика. Пусть выберут сами. Сторож: у них 60 автоматизаций и о сбоях узнают, когда кто-то спросит «где отчёт»; в data/avtomatyzatsii-zhurnal.csv 4 спрятанные проблемы, главная — «ok» без успеха. Скрипт + Claude — прямое продолжение ДЗ: шаг 2 считает, шаг 3 пишет вывод. CLAUDE.md: их рабочий около 25 КБ, читается в каждой сессии. Рецензент: сравнение трёх КП, потом второй агент ищет утверждения без источника. Подробно — AGT-LESSON03-DEEPER.md.</aside>
+</section>
+</div>
+<div id="notes"></div>
+<div id="help">← → гортати · N нотатки · F повний екран</div>
+<div id="bar"></div>
+<script>
+(function(){
+ var s=[].slice.call(document.querySelectorAll('section')),i=0;
+ function fit(){var k=Math.min(innerWidth/1920,innerHeight/1080);s.forEach(function(x){x.style.transform='translate(-50%,-50%) scale('+k+')'})}
+ function show(n){i=Math.max(0,Math.min(s.length-1,n));s.forEach(function(x,j){x.classList.toggle('on',j===i)});
+  document.getElementById('bar').textContent=(i+1)+' / '+s.length;
+  var a=s[i].querySelector('aside');document.getElementById('notes').textContent=a?a.textContent:'';
+  if(location.hash!=='#'+(i+1))history.replaceState(null,'','#'+(i+1));}
+ addEventListener('keydown',function(e){
+  if(['ArrowRight','PageDown',' ','Enter'].indexOf(e.key)>=0){e.preventDefault();show(i+1)}
+  else if(['ArrowLeft','PageUp','Backspace'].indexOf(e.key)>=0){e.preventDefault();show(i-1)}
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(s.length-1);
+  else if(e.key==='n'||e.key==='N'||e.key==='т'||e.key==='Т')document.getElementById('notes').classList.toggle('show');
+  else if(e.key==='f'||e.key==='F'||e.key==='а'||e.key==='А'){if(!document.fullscreenElement)document.documentElement.requestFullscreen().catch(function(){});else document.exitFullscreen();}
+ });
+ addEventListener('click',function(e){if(e.target.closest('#notes'))return;show(e.clientX>innerWidth/3?i+1:i-1)});
+ addEventListener('resize',fit);fit();
+ var h=parseInt(location.hash.slice(1),10);show(h?h-1:0);
+ setTimeout(function(){document.getElementById('help').style.display='none'},6000);
+})();
+</script></body></html>

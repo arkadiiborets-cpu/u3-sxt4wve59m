@@ -1,0 +1,253 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Запросы урока 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Unbounded:wght@900&display=swap">
+<style>
+/* Шпаргалка запросов: слева навигация по блокам, справа карточки «где вставить → текст → кнопка копировать». AXAL One, тёмная тема. */
+:root {
+  --page: #08080B; --panel: #13121C; --surface: #0D0C14; --line: #232130; --line-strong: #3A3650;
+  --ink: #EFEDFA; --ink-2: #B4AFC8; --ink-3: #918CA9;
+  --accent: #8B5CF6; --accent-text: #A78BFA; --live: #22D3EE; --warn: #FBBF24; --ok: #34D399;
+  --ui: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --display: "Unbounded", "Arial Black", sans-serif;
+  color-scheme: dark;
+}
+body { background: var(--page); color: var(--ink); font-family: var(--ui); font-size: 14px; line-height: 1.45; margin: 0;
+  padding-block: 20px 40px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 28px; }
+nav { position: sticky; top: calc(16px + env(safe-area-inset-top, 0px)); align-self: start; display: flex; flex-direction: column; gap: 4px; }
+nav a { color: var(--ink-2); text-decoration: none; font-size: 13px; padding: 4px 8px; border-left: 2px solid transparent; }
+nav a:hover, nav a:focus-visible { color: var(--ink); border-left-color: var(--accent); outline: none; }
+h1 { font-family: var(--display); font-weight: 900; font-size: 24px; text-transform: uppercase; margin: 0 0 4px; }
+h1 span { color: var(--accent); }
+.lead { color: var(--ink-3); margin: 0 0 20px; }
+section { margin-bottom: 28px; scroll-margin-top: 16px; }
+h2 { font-size: 13px; font-family: var(--mono); font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-text); margin: 0 0 10px; }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 12px 14px; margin-bottom: 8px; display: flex; flex-direction: column; gap: 8px; }
+.head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.where { font-size: 13px; color: var(--ink-2); }
+.where b { color: var(--ink); font-weight: 600; }
+pre { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: var(--mono); font-size: 13px; color: var(--ink); background: var(--surface); border: 1px solid var(--line-strong); padding: 10px 12px; }
+button { font-family: var(--mono); font-size: 12px; color: var(--ink); background: transparent; border: 1px solid var(--line-strong); padding: 4px 10px; cursor: pointer; white-space: nowrap; }
+button:hover { border-color: var(--accent); }
+button:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 2px; }
+button.done { border-color: var(--ok); color: var(--ok); }
+.say { font-size: 13px; color: var(--ink-2); border-left: 2px solid var(--live); padding: 2px 10px; }
+.say b { color: var(--ink); }
+ul.q { margin: 0; padding-left: 18px; color: var(--ink-2); }
+ul.q li { margin: 3px 0; }
+ul.q b { color: var(--ink); }
+@media (max-width: 760px) { .wrap { grid-template-columns: 1fr; } nav { position: static; flex-direction: row; flex-wrap: wrap; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="wrap">
+<nav aria-label="Блоки">
+  <a href="#prep">0 · До занятия</a>
+  <a href="#code">1 · Чат и Code</a>
+  <a href="#skill">2 · Skill живьём</a>
+  <a href="#path">3 · Skill → расписание</a>
+  <a href="#practice">4 · Skill с группой</a>
+  <a href="#auto">5 · Автоматизации</a>
+  <a href="#research">6 · Исследование</a>
+  <a href="#talk">7 · Вопросы группе</a>
+  <a href="#hw3">8 · Домашка 3</a>
+  <a href="#deeper">9 · Глубже</a>
+  <a href="#todo">10 · Мої задачі</a>
+</nav>
+<main>
+<h1>Запросы урока 3<span>.</span></h1>
+<p class="lead">Всё на украинском, для вставки в их веб-Code на репозитории agt-claude-practice. Кнопка копирует текст целиком.</p>
+
+<section id="prep">
+<h2>0 · До занятия</h2>
+<div class="say">1. Репозиторий <b>agt-claude-practice</b> в организации AIagtplus, Claude GitHub App установлен на него, у их GitHub-аккаунта есть доступ. 2. Открыть claude.ai/code на их аккаунте, выбрать репозиторий, проверить, что сессия стартует. 3. Режим разрешений: с подтверждением. 4. Своё расписание для показа — на вашем аккаунте.</div>
+</section>
+
+<section id="code">
+<h2>1 · Чат и Code: одна задача двумя способами</h2>
+<div class="card"><div class="head"><span class="where"><b>Обычный чат</b> · вложить data/weekly-metrics.csv</span><button type="button">Копировать</button></div>
+<pre>Порахуй частку запізнень по тижнях і скажи, на якому тижні було найгірше і чому це може бути важливо.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Веб-Code в режиме Plan</b> · репозиторий agt-claude-practice</span><button type="button">Копировать</button></div>
+<pre>Зроби скрипт, який читає data/weekly-metrics.csv, рахує частку запізнень по тижнях і зберігає звіт у reports/. Спершу покажи план, потім виконай. Наприкінці скажи, як перевірити результат.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · после результата</span><button type="button">Копировать</button></div>
+<pre>Що ти припустив, коли це робив? Що могло б зробити цей результат неправильним?</pre></div>
+<div class="say">Говорю: <b>в чате получили ответ, в Code — файл, который запускается снова на новых данных</b>. Модель одна, разное — что она видит и что может сделать сама.</div>
+</section>
+
+<section id="skill">
+<h2>2 · Skill живьём: «чек → строка»</h2>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · показать готовый skill (30 сек)</span><button type="button">Копировать</button></div>
+<pre>Покажи skill chek-v-riadok з .claude/skills і поясни простими словами: що в описі, що в інструкції і коли ти його підхопиш сам.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Новая сессия Code</b> · проверка 1: загрузился ли</span><button type="button">Копировать</button></div>
+<pre>Внеси в журнал ремонтів документ з data/chek-1.txt</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Та же сессия</b> · проверка 3: трудный случай</span><button type="button">Копировать</button></div>
+<pre>А тепер data/chek-2-vazhkyi.txt</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Если что-то не так</b> · правка</span><button type="button">Копировать</button></div>
+<pre>Онови skill chek-v-riadok: [що виправити]. Покажи, що саме ти змінив в описі або інструкції.</pre></div>
+<div class="say">Если живьём не вышло — в репозитории уже лежит готовый <b>.claude/skills/chek-v-riadok</b>. Показать сам файл и сказать: <b>описание — единственное, что Claude видит заранее</b>.</div>
+</section>
+
+<section id="path">
+<h2>3 · Шлях задачі: чат → skill → Code → расписание</h2>
+<div class="card"><div class="head"><span class="where"><b>Чат</b> · после того как задача решена в разговоре</span><button type="button">Копировать</button></div>
+<pre>Збережи те, що ми щойно зробили, як skill: файл SKILL.md з назвою латиницею, описом (коли використовувати — моїми словами), кроками, форматом результату, прикладом і тим, що мені перевіряти. Покажи текст файлу повністю.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · положить skill из чата в репозиторий</span><button type="button">Копировать</button></div>
+<pre>Додай цей skill у .claude/skills/[назва]/SKILL.md без змін:
+[встав текст із чату]</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · запуск готового skill</span><button type="button">Копировать</button></div>
+<pre>/tyzhnevyi-zvit</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code или чат</b> · расписание (лучше на вашем аккаунте)</span><button type="button">Копировать</button></div>
+<pre>Запускай skill tyzhnevyi-zvit щопонеділка о 9:07 за Києвом на цьому репозиторії. Спершу запусти його один раз зараз, щоб я перевірив результат. Залиш лише потрібні конектори.</pre></div>
+<div class="say">Говорю: <b>расписание — это отложенный запуск skill</b>. Project даёт знания, skill — порядок действий, расписание — время. В облаке: от 1 часа, без памяти между запусками, тратит лимит. После показа — <b>поставить на паузу</b>.</div>
+</section>
+
+<section id="practice">
+<h2>4 · Skill вместе с группой (вы за клавиатурой)</h2>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · группа диктует задачу</span><button type="button">Копировать</button></div>
+<pre>Створи skill у .claude/skills для задачі: [назва].
+Формат: [розділи, обмеження].
+Для кого і яким тоном: [хто читає].
+Приклад, який нам подобається: [встав].
+Спершу запитай, коли ми це використовуємо і що таке хороший результат.
+Опис skill напиши нашими словами. Шаблон: templates/SKILL-template.md</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Нет своей задачи</b> · рекламация</span><button type="button">Копировать</button></div>
+<pre>Відповідай на лист із data/M02-lyst-reklamatsiia.txt</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Проверка</b> · новая сессия</span><button type="button">Копировать</button></div>
+<pre>Зроби [задачу звичайними словами, не називаючи skill] для [вхідний файл]. Наприкінці скажи, який skill ти використав і що мені перевірити.</pre></div>
+</section>
+
+<section id="auto">
+<h2>5 · Автоматизации</h2>
+<div class="card"><div class="head"><span class="where"><b>Чат или Code</b> · пять вопросов к своей автоматизации</span><button type="button">Копировать</button></div>
+<pre>Ось моя автоматизація: [що робить, коли запускається, куди пише]. Дай відповідь на 5 питань: як я зрозумію, що спрацювало; хто дізнається, якщо зламалось; під чиїм обліковим записом вона працює; що буде, якщо запустити двічі; де код і хто власник. Чого не вистачає — запропонуй, як додати.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Перед запуском любой автоматизации</b></span><button type="button">Копировать</button></div>
+<pre>Зламай це навмисно: неправильний пароль, порожні дані, повторний запуск. Покажи, що станеться і хто про це дізнається. Нічого не змінюй у робочих системах.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Выбор: cron или расписание</b></span><button type="button">Копировать</button></div>
+<pre>Ось задача: [опис, як часто, звідки дані, куди результат]. Що краще: скрипт за розкладом на сервері, розклад Claude чи просто skill, який я запускаю сам? Поясни простими словами, скільки це коштуватиме і що може зламатися.</pre></div>
+</section>
+
+<section id="research">
+<h2>6 · Исследование (если есть время)</h2>
+<div class="card"><div class="head"><span class="where"><b>Чат с Research</b> или Code · сравнение трёх КП из data/</span><button type="button">Копировать</button></div>
+<pre>Я порівнюю трьох перевізників (data/kp-1…, kp-2…, kp-3…) і маю вирішити до п'ятниці.
+Витягни ціну, додаткові платежі, простій, умови оплати і договору.
+Зроби таблицю для керівника з розрахунком на 20 рейсів на місяць.
+Познач приховані платежі й небезпечні умови. Для кожної цифри вкажи файл.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Проверка</b></span><button type="button">Копировать</button></div>
+<pre>Назви 3 цифри з таблиці, які мені варто звірити з оригіналом, і в чому ти не впевнений.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Research</b> · шаблон брифа</span><button type="button">Копировать</button></div>
+<pre>Мені треба вирішити [що] до [дати]. Контекст: [бізнес, регіон, клієнти].
+З'ясуй: [3–5 питань]. Порівняй [варіанти] за [критеріями].
+Формат: [розділи або таблиця]. Для кожної цифри — джерело.
+Познач, у чому ти не впевнений, щоб я перевірив це першим.</pre></div>
+</section>
+
+<section id="talk">
+<h2>7 · Вопросы группе</h2>
+<ul class="q">
+  <li><b>Кто что уже автоматизировал?</b> Какая ваша автоматизация — правило, правило + AI или агент?</li>
+  <li><b>Как вы узнаёте, что ваша автоматизация сегодня сработала?</b> Кто последний раз это проверял?</li>
+  <li><b>Что вы просите Claude чаще всего?</b> Что объясняли ему больше двух раз? Это первый кандидат в skill.</li>
+  <li><b>Что из ваших ежедневных отчётов можно отдать расписанию Claude</b>, а что должно остаться скриптом?</li>
+  <li><b>Что будет, если завтра сменится пароль</b> у человека, под чьей учёткой работает автоматизация?</li>
+</ul>
+<h2 style="margin-top:14px">По людям (срез на 03.11)</h2>
+<ul class="q">
+  <li><b>Крупчинський:</b> его ДЗ — это автоматизация <b>rs_contacts_daily</b> (контакты NetHunt → Ringostat, номера в +380, подпись «Ім’я — Компанія / лід», каждый день). «Расскажите за 3 минуты, как делали и где сами поправили путь Claude». 03.11 вход в Ringostat прошёл с третьей попытки — и скрипт это заметил.</li>
+  <li><b>Крупчинський:</b> пять автоматизаций ставят задачи от его имени. «Что будет, если вы смените пароль?» → технические учётки.</li>
+  <li><b>Турбал:</b> почта k1 → задачи — самая дорогая автоматизация (~$60 из $174 до 07.10). «Какие письма можно отсеять правилом, без Claude?»</li>
+  <li><b>Геков:</b> больше всех автоматизаций с AI (visitqc, mgrqc, calls_qc). «Заметили, что 01–03.11 Read.ai не пускал робота?» А его daily_report сделан вообще без Claude — хороший пример.</li>
+  <li><b>Парубець:</b> 28.07 задачи из его почты ушли коллеге из-за чужого логина в .env. «Как заметили? Сколько прошло времени?»</li>
+  <li><b>Баранков:</b> у него и cron-напоминания, и ежедневный отчёт как routine Claude. «Чем отличаются? Нужна ли человеческая сводка к “Раді власників”?»</li>
+  <li><b>Веретенник:</b> «Мониторинг законов раз в месяц — сделать расписанием Claude с черновиком для вас?»</li>
+  <li><b>Кирилуша:</b> internal_bot — единое окно на 58 человек. «Чего там не хватает?»</li>
+  <li><b>Поліщук:</b> пользуется Codex (не проверено). «Чем отличается для вас от Claude Code?»</li>
+</ul>
+<div class="say">Историю контроля задач КВ13 — <b>без имени</b>, и лучше заранее предупредить Дениса. Полная справка — <b>AGT-AUTOMATIONS-BRIEF.md</b>.</div>
+</section>
+
+<section id="hw3">
+<h2>8 · Домашка 3</h2>
+<div class="card"><div class="head"><span class="where"><b>Code в режиме Plan</b> · после того как Claude показал план</span><button type="button">Копировать</button></div>
+<pre>У плані зміни: [що виправити]. Що ти припускаєш про дані? Що зробить результат неправильним? Онови план.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · показать субагента (если есть время)</span><button type="button">Копировать</button></div>
+<pre>Запусти окремого субагента-рецензента: нехай перевірить звіт у reports/ за п'ятьма питаннями з README (як зрозуміти, що спрацювало; хто дізнається про збій; під чиїм логіном; що буде при повторному запуску; де код і хто власник) і поверне короткий список зауважень.</pre></div>
+<p class="say">Сказать: шаг 2 — <b>cron на рабочем сервере</b>, как все ваши автоматизации; токен можно вставить прямо в запрос. Все инструкции — в homework/.</p>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · показать задание группе</span><button type="button">Копировать</button></div>
+<pre>Відкрий homework/README.md і поясни простими словами за 5 речень: що треба зробити, скільки це займе часу і що здати в Moodle. Потім покажи таблицю «Як оцінюємо».</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code на рабочем репозитории, режим Plan</b> · участник: cron и бот (шаг 2)</span><button type="button">Копировать</button></div>
+<pre>/plan Домашнє завдання 3. Зроби скрипт: мій бот @[ім'я бота] надсилає мені звіт.
+Що в звіті: [що саме] у форматі «[назва формату]»:
+[вставте приклад формату]
+Звідки дані: [таблиця / NetHunt / Бустер / Ringostat / інше]. Звіт лише читає дані.
+Токен бота: [вставте токен]
+Мій chat_id знайди сам — я вже натиснув Start у боті.
+Назви файлу і змінних — з префіксом hw3_[прізвище].
+Якщо даних немає або вони старі — бот так і пише, а не мовчить.
+Розклад поки не став: спершу один тестовий запуск, покажи, що прийшло.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code на рабочем репозитории, режим Plan</b> · участник: расписание после проверки</span><button type="button">Копировать</button></div>
+<pre>Тепер постав цей звіт на розклад: щодня о 9:05 за Києвом.
+Додай автоматизацію в AUTOMATIONS.md: що робить, коли, звідки дані, власник — я.
+Покажи рядок розкладу і коли буде наступний запуск за Києвом.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · участник: описание (шаг 4)</span><button type="button">Копировать</button></div>
+<pre>Допоможи мені заповнити homework/shablony/opys-avtomatyzatsii.md для моєї домашньої роботи.
+Постав мені питання по одному: що за звіт, кому і навіщо, звідки дані, коли запускається, як я перевіряю, що він правильний, що буде, якщо щось зламається.
+Потім збережи заповнений файл у groups/group-&lt;N&gt;/opys-&lt;прізвище&gt;.md.
+Не вигадуй відповідей за мене.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · участник застрял</span><button type="button">Копировать</button></div>
+<pre>Я на кроці [N] домашнього завдання 3 (homework/). Ось що я зробив: [...]. Ось що бачу: [текст помилки]. Що пішло не так і що зробити далі? Пояснюй по одному кроку.</pre></div>
+</section>
+
+<section id="todo">
+<h2>10 · «Мої задачі» вживую</h2>
+<p class="say">Строим вживую в их веб-Code. Дома каждый делает свой список — шаг 5 домашки.</p>
+<div class="card"><div class="head"><span class="where"><b>Code в режиме Plan</b> · построить дашборд</span><button type="button">Копировать</button></div>
+<pre>Зроби дашборд-артефакт «Мої задачі» для нашої команди.
+Дані: data/komanda.json (хто є хто), data/moi-zadachi.json (задачі, які люди додали самі), data/bbooster-zadachi.json (задачі з Бізнес Бустера).
+Що потрібно: фільтр за людиною; групи «Прострочено», «Сьогодні», «Цей тиждень», «Пізніше»; позначка джерела (Бустер, Telegram, чат); зручно на телефоні.
+Задачі можна додавати й відмічати прямо на сторінці з телефона, і вони зберігаються.
+Сьогодні 06.11.2026. Спершу постав мені питання і покажи план.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Та же сессия</b> · добавить задачу фразой (skill dodaty-zadachu)</span><button type="button">Копировать</button></div>
+<pre>Додай Олені задачу: завтра до обіду терміново передзвонити в Епіцентр.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Приложение Claude на телефоне</b> · то же голосом</span><button type="button">Копировать</button></div>
+<pre>Додай Ігорю задачу: у понеділок записати Renault Master на ТО, коли буде час.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code</b> · расписание (если есть время, потом пауза)</span><button type="button">Копировать</button></div>
+<pre>Щоранку о 8:07 перечитуй data/moi-zadachi.json і data/bbooster-zadachi.json, онови дашборд «Мої задачі» за тим самим посиланням і допиши зверху кожному три головні задачі на сьогодні. Спершу запусти один раз зараз.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>Code в режиме Plan</b> · обсудить, что куда (слайд 16)</span><button type="button">Копировать</button></div>
+<pre>Ось система «Мої задачі»: сторінка з задачами, додавання фразою, задачі з Бустера кожні 15 хвилин, голосові з Telegram, план дня щоранку. Для кожної частини скажи: це артефакт, skill, cron на сервері чи розклад Claude — і чому. Нічого не створюй.</pre></div>
+</section>
+
+<section id="deeper">
+<h2>9 · Глубже (запасной блок)</h2>
+<p class="say">Включать, если «это мы уже знаем». Слайд 23, группа выбирает вопрос. Подробности — AGT-LESSON03-DEEPER.md.</p>
+<div class="card"><div class="head"><span class="where"><b>«Чому не прийшло?»</b> · найти сломанные автоматизации</span><button type="button">Копировать</button></div>
+<pre>Прочитай data/avtomatyzatsii-zhurnal.csv. Сьогодні 06.11.2026. Для кожної автоматизації визнач: жива, підозріла чи мертва — і чому. Врахуй, що статус «ok» ще не означає успіх: порівняй останній запуск і останній успіх з тим, як часто вона має працювати. Покажи результат у форматі «Сторож» з homework/shablony/formaty-zvitiv.md.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>«Чому не прийшло?»</b> · сделать из этого skill</span><button type="button">Копировать</button></div>
+<pre>Зроби з цієї перевірки skill storozh у .claude/skills/storozh/SKILL.md, щоб його можна було поставити в розклад щодня о 9:07. Сторож пише навіть тоді, коли все добре. Спершу покажи текст skill, потім збережи.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>«Цифри є, а висновків нема»</b> · скрипт считает, Claude объясняет</span><button type="button">Копировать</button></div>
+<pre>Додай у skill tyzhnevyi-zvit скрипт scripts/rakhuvaty.py, який рахує всі цифри з CSV: замовлення, запізнення, частку запізнень, порівняння з попереднім тижнем і з середнім. Зміни SKILL.md: цифри бери лише з виводу скрипта, сам нічого не рахуй; твоя частина — висновки і питання. Запусти на data/weekly-metrics.csv і покажи, що цифри для тижня 8 збігаються з ручним підрахунком.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>«Claude забуває мої правила»</b> · CLAUDE.md на диете</span><button type="button">Копировать</button></div>
+<pre>Прочитай data/CLAUDE-rozdutyi-pryklad.md. Розклади його на чотири купки: 1) правила, потрібні в кожній сесії — лишаються в CLAUDE.md; 2) процедури — стають skills; 3) довідка — окремі файли, які Claude читає за потреби; 4) що прибрати або перенести в журнал. Покажи таблицю і новий короткий CLAUDE.md. Файлів не створюй, доки я не скажу.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>«Як перевірити Claude?»</b> · сравнение</span><button type="button">Копировать</button></div>
+<pre>Порівняй три комерційні пропозиції з data/kp-*: ціна, терміни, умови оплати, ризики. Зроби таблицю і рекомендацію в 3 реченнях.</pre></div>
+<div class="card"><div class="head"><span class="where"><b>«Як перевірити Claude?»</b> · независимый рецензент</span><button type="button">Копировать</button></div>
+<pre>Запусти окремого агента-рецензента. Дай йому лише своє порівняння і файли data/kp-*, без своїх міркувань. Нехай знайде твердження, які не підтверджуються файлами, і цифри, що не збігаються. Потім покажи, з чим ти згоден, а з чим ні, і що мені перевірити руками.</pre></div>
+</section>
+
+</main>
+</div>
+
+<script>
+document.querySelectorAll('.card').forEach(function (card) {
+  var btn = card.querySelector('button');
+  var pre = card.querySelector('pre');
+  if (!btn || !pre) return;
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Скопировано'; btn.classList.add('done'); setTimeout(function () { btn.textContent = 'Копировать'; btn.classList.remove('done'); }, 1600); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(pre); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Выделено — Ctrl+C'; };
+    try { navigator.clipboard.writeText(pre.innerText).then(done, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+</body></html>
